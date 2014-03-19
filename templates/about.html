@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+{%block script%}
+<script type="text/javascript">
+$(function(){
+	$.ajax({
+		type: "POST",
+		url: "/mail/",
+	}).done(function( t ) {
+		$('.ml').text(t).attr('href', 'mailto:'+t)
+	}).fail(function(jqXHR, textStatus, errorThrown){
+		alert(errorThrown)
+	});
+})
+</script>
+{%endblock%}
+
+{%block content%}
+<h1 class="title secondary-title">About us</h1>
+<table class="centered"> 
+	<tr>
+		<th>所在地</th>
+		<td>北海道大学クラーク会館某所</td>
+	</tr>
+	<tr>
+		<th>代表者</th>
+		<td>北海道大学獣医学部3年生<br />松尾 櫂</td>
+	</tr>
+	<tr>
+		<th>連絡先</th>
+		<td><a href class="ml"></a></td>
+	</tr>
+</table>
+
+
+{%endblock%}
