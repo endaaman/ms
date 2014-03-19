@@ -150,6 +150,7 @@ html {
 body {
   font-family: "メイリオ", "Meiryo", "Hiragino Kaku Gothic ProN", "ヒラギノ角ゴ ProN W3";
   height: 100%;
+  min-height: 600px;
   background-color: transparent;
   color: #34495e; }
 
@@ -167,14 +168,24 @@ body {
   background-size: cover; }
 
 #side-bar {
-  position: fixed;
+  position: absolute;
   left: 0;
   top: 0;
   width: 300px;
   height: 100%;
+  min-height: 600px;
   background-color: rgba(255, 255, 255, 0.2);
   border-right: 1px solid #f9f9f9; }
+  #side-bar .bottom-guide {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 300px; }
+    #side-bar .bottom-guide .menu-item {
+      border-bottom: 0;
+      border-top: 1px solid #f9f9f9; }
   #side-bar .menu-item {
+    width: 300px;
     height: 80px;
     border-bottom: 1px solid #f9f9f9;
     font-family: "Alegreya Sans SC";
@@ -241,32 +252,12 @@ table {
       background-color: rgba(255, 255, 255, 0.6);
       vertical-align: middle;
       padding: 16px;
+      height: 80px;
       line-height: 1.5em; }
     table tr th {
-      width: 160px;
-      height: 60px;
+      width: 200px;
       text-align: center; }
     table tr td {
-      width: 240px;
+      width: 280px;
       height: 60px;
       text-align: left; }
-
-ul.tiles {
-  width: 980px;
-  margin-right: auto;
-  margin-left: auto; }
-  ul.tiles:after {
-    content: "";
-    display: block;
-    clear: both; }
-  ul.tiles li.tile {
-    border-radius: 5px;
-    background-color: #3498db;
-    margin-left: 40px;
-    margin-top: 40px;
-    width: 300px;
-    height: 200px;
-    float: left; }
-    ul.tiles li.tile:nth-child(3n-2) {
-      clear: both;
-      margin-left: 0; }

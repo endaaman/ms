@@ -4,21 +4,33 @@
 <meta name="robots" content="noindex,nofollow">
 <link rel="stylesheet" href="{{STATIC_URL}}css/common.css">
 <script src="{{STATIC_URL}}js/jquery-2.0.3.min.js"></script>
-<title>{%block title%}ホクダイミスキャン{%endblock%}</title>
+<title>{%block title%}ミス北大2014{%endblock%}</title>
 {%block head%}{%endblock%}
 {%block script%}{%endblock%}
 <body>
 <div id="bg-container"></div>
 
 <div id="side-bar">	
-	<div class="menu-item size2">
-		<a href="/">LOGO SPACE</a>
-	</div>
 	<div class="menu-item">
-		<a href="/">HOME</a>
+		<a href="{%url "home" %}">HOME</a>
 	</div>
+
 	<div class="menu-item">
-		<a href="/about">ABOUT</a>		
+		<a href="/">MENU1</a>		
+	</div>
+
+	<div class="menu-item">
+		<a href="/">MENU2</a>		
+	</div>
+
+	<div class="menu-item">
+		<a href="{%url "about" %}">ABOUT</a>		
+	</div>
+
+	<div class="bottom-guide">
+		<div class="menu-item size2">
+			<a href="/">LOGO SPACE</a>
+		</div>		
 	</div>
 </div>
 <div id="main-content">

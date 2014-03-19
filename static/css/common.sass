@@ -47,6 +47,7 @@ html
 body
 	font-family: "メイリオ", "Meiryo", "Hiragino Kaku Gothic ProN", "ヒラギノ角ゴ ProN W3"
 	height: 100%
+	min-height: 600px
 	background-color: transparent
 	color : #34495e
 	@extend .f16 
@@ -70,24 +71,37 @@ body
 @import url("http://fonts.googleapis.com/css?family=Alegreya+Sans+SC:100")
 
 $side-bar-border-color : #f9f9f9
+$side-bar-f-color : #f9f9f9
 $side-bar-bg-color: rgba(255,255,255,0.2)
 
 $side-bar-w : 300px
 
 
 #side-bar
-	position: fixed
+	position: absolute
 	left: 0
 	top: 0
 	width: $side-bar-w
 	height: 100%
+	min-height: 600px
 	background-color: $side-bar-bg-color
 	border-right: 1px solid $side-bar-border-color
-
-
+	
+	
 	$base-h : 80px
 	$f-size : 60px
+
+	.bottom-guide
+		position: absolute
+		bottom: 0
+		left: 0
+		width: $side-bar-w
+		.menu-item
+			border-bottom: 0
+			border-top: 1px solid $side-bar-border-color
+	
 	.menu-item
+		width: $side-bar-w
 		height: $base-h
 		border-bottom: 1px solid $side-bar-border-color
 		font-family: 'Alegreya Sans SC'
@@ -98,7 +112,7 @@ $side-bar-w : 300px
 			line-height: $base-h
 			text-align: center
 			text-decoration: none
-			color: $side-bar-border-color
+			color: $side-bar-f-color
 			text-shadow: 0px 1px 3px rgba(0,0,0,0.2)
 			transition: background-color 0.2s ease
 			&:hover
@@ -135,7 +149,7 @@ h1.secondary-title
 
 
 $frame-bg-color: rgba(255,255,255,0.6)
-$frame-f-color: #222
+$frame-f-color: #442
 
 
 table
@@ -150,39 +164,17 @@ table
 			vertical-align: middle
 			padding: 16px
 			// border: 1px solid $side-bar-border-color
+			height: 80px
 			line-height: 1.5em
 
 		th
-			width: 160px
-			height: 60px
+			width: 200px
 			text-align: center
 		
 		td
-			width: 240px
+			width: 280px
 			height: 60px
 			text-align: left
 		
-
-ul.tiles
-	$mh : 40px
-	$mv : 40px
-	$w : 300px
-	$h : 200px
-	$c : 3
-	@include clearfix
-	width : ($w + $mh) * $c - $mh 
-	margin-right: auto
-	margin-left: auto
-	li.tile
-		border-radius: 5px
-		background-color : #3498db
-		margin-left: $mh
-		margin-top: $mv
-		width: $w
-		height: $h
-		float: left
-		&:nth-child(3n-2)
-			clear: both
-			margin-left: 0
 
 
