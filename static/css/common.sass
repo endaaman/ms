@@ -1,14 +1,188 @@
 @import "compass"
 @import "compass/reset"
 
-body
-	font-size: 16px
-	font-family: "Meiryo", "メイリオ", "Hiragino Kaku Gothic ProN", "ヒラギノ角ゴ ProN W3"
-	height: 100%
+// mixin functions
+@mixin clearfix
+	&:after
+		content: ""
+		display: block
+		clear: both
+
+// mixin classes
+
+@for $i from 1 through 10
+	$base-size : 2
+	.p#{$base-size * $i}
+		padding: #{$base-size * $i}px
+
+@for $i from 1 through 10
+	$base-size : 2
+	.m#{$base-size * $i}
+		margin: #{$base-size * $i}px
+
+@for $i from 2 through 8
+	$base-size : 4
+	.f#{$base-size * $i}
+		font-size: #{$base-size * $i}px
+
+
+.left
+	text-align: left
+.center
+	text-align: center
+.right
+	text-align: right
+
+.centered
+	margin-right: auto
+	margin-left: auto
+
+// stylings
 
 html
 	height: 100%
+	background-color: #eee
+	position: relative
+
+body
+	font-family: "メイリオ", "Meiryo", "Hiragino Kaku Gothic ProN", "ヒラギノ角ゴ ProN W3"
+	height: 100%
+	background-color: transparent
+	color : #34495e
+	@extend .f16 
+
+#bg-container
+	z-index: -1
+	position: fixed
+	left: 0
+	top: 0
+	width: 100%
+	height: 100%	
+	
+	background-image: url("../img/bg.jpg")
+	background-repeat: no-repeat
+	background-position: center center
+	background-size: cover
 
 
-h1
-	font-size: 40px
+
+
+@import url("http://fonts.googleapis.com/css?family=Alegreya+Sans+SC:100")
+
+$side-bar-border-color : #f9f9f9
+$side-bar-bg-color: rgba(255,255,255,0.2)
+
+$side-bar-w : 300px
+
+
+#side-bar
+	position: fixed
+	left: 0
+	top: 0
+	width: $side-bar-w
+	height: 100%
+	background-color: $side-bar-bg-color
+	border-right: 1px solid $side-bar-border-color
+
+
+	$base-h : 80px
+	$f-size : 60px
+	.menu-item
+		height: $base-h
+		border-bottom: 1px solid $side-bar-border-color
+		font-family: 'Alegreya Sans SC'
+		font-size: $f-size
+		a
+			display: block
+			height: $base-h
+			line-height: $base-h
+			text-align: center
+			text-decoration: none
+			color: $side-bar-border-color
+			text-shadow: 0px 1px 3px rgba(0,0,0,0.2)
+			transition: background-color 0.2s ease
+			&:hover
+				background-color: rgba(255,255,255,0.3)
+
+	@for $i from 1 through 4
+		.size#{$i}
+			height: #{$base-h * $i}
+			a
+				height: #{$base-h * $i}
+				line-height: #{$base-h * $i}
+
+#main-content
+	margin-left: $side-bar-w
+	@extend .p8
+
+
+@import url("http://fonts.googleapis.com/css?family=Raleway:100")
+
+h1.title
+	margin-top: 30px
+	margin-right: 40px
+	margin-bottom: 60px
+	color : #ecf0f1
+	text-align: right
+	font-family: 'Raleway', sans-serif
+
+h1.primary-title
+	font-size: 100px
+	line-height: 80px
+
+h1.secondary-title
+	font-size: 80px
+
+
+$frame-bg-color: rgba(255,255,255,0.6)
+$frame-f-color: #222
+
+
+table
+	border-collapse: separate
+	border-spacing: 12px 6px
+	tr
+		display: table-row
+		vertical-align: inherit
+		border-color: inherit
+		th,td
+			background-color: $frame-bg-color
+			vertical-align: middle
+			padding: 16px
+			// border: 1px solid $side-bar-border-color
+			line-height: 1.5em
+
+		th
+			width: 160px
+			height: 60px
+			text-align: center
+		
+		td
+			width: 240px
+			height: 60px
+			text-align: left
+		
+
+ul.tiles
+	$mh : 40px
+	$mv : 40px
+	$w : 300px
+	$h : 200px
+	$c : 3
+	@include clearfix
+	width : ($w + $mh) * $c - $mh 
+	margin-right: auto
+	margin-left: auto
+	li.tile
+		border-radius: 5px
+		background-color : #3498db
+		margin-left: $mh
+		margin-top: $mv
+		width: $w
+		height: $h
+		float: left
+		&:nth-child(3n-2)
+			clear: both
+			margin-left: 0
+
+

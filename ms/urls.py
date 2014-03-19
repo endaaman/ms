@@ -8,9 +8,11 @@ import settings
 
 urlpatterns = patterns('',
     url(r'^$', 'ms.views.home', name='home'),
-    # url(r'^blog/', include('blog.urls')),
+    url(r'^about/$', 'ms.views.about', name='about'),
+    url(r'^mail/$', 'ms.views.mail', name='mail'),
+    # url(r'^candidate/', include('blog.urls')),
 
-    url(r'^admin/', include(admin.site.urls)),
+    url(r'^admin/$', include(admin.site.urls)),
 )
 
 
