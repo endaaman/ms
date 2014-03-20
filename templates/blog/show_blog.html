@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{%block content%}
+<h1 class="title secondary-title"><a href="{%url "blog.home"%}">Blog</a></h1>
+<div class="entry">
+	<h1 class="entry-title">{{blog.title}}</h1>
+	<div class="sub-data">
+		<span class="author">{{blog.author}}</span>		
+		<span class="pub-date">{{blog.pub_date}}</span>		
+	</div>         
+    {{ blog.message_html|safe}}
+</div>
+{%endblock%}
