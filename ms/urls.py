@@ -12,7 +12,9 @@ urlpatterns = patterns('',
     url(r'^mail/$', 'ms.views.mail', name='mail'),
     # url(r'^candidate/', include('blog.urls')),
 
-    url(r'^admin/$', include(admin.site.urls)),
+    url(r'^blog/', include('blog.urls')),
+
+    url(r'^admin/', include(admin.site.urls)),
 )
 
 

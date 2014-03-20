@@ -8,6 +8,10 @@
 		display: block
 		clear: both
 
+@mixin a-plain($color: inherit)
+	color: $color
+	text-decoration: none
+
 // mixin classes
 
 @for $i from 1 through 10
@@ -49,7 +53,6 @@ body
 	height: 100%
 	min-height: 600px
 	background-color: transparent
-	color : #34495e
 	@extend .f16 
 
 #bg-container
@@ -76,9 +79,12 @@ $side-bar-bg-color: rgba(255,255,255,0.2)
 
 $side-bar-w : 300px
 
+$side-bar-menu-item-h : 80px
+$side-bar-f-size : 48px
+
 
 #side-bar
-	position: absolute
+	position: fixed
 	left: 0
 	top: 0
 	width: $side-bar-w
@@ -88,8 +94,6 @@ $side-bar-w : 300px
 	border-right: 1px solid $side-bar-border-color
 	
 	
-	$base-h : 80px
-	$f-size : 60px
 
 	.bottom-guide
 		position: absolute
@@ -102,17 +106,16 @@ $side-bar-w : 300px
 	
 	.menu-item
 		width: $side-bar-w
-		height: $base-h
+		height: $side-bar-menu-item-h
 		border-bottom: 1px solid $side-bar-border-color
 		font-family: 'Alegreya Sans SC'
-		font-size: $f-size
+		font-size: $side-bar-f-size
 		a
 			display: block
-			height: $base-h
-			line-height: $base-h
+			height: $side-bar-menu-item-h
+			line-height: $side-bar-menu-item-h
 			text-align: center
-			text-decoration: none
-			color: $side-bar-f-color
+			@include a-plain($side-bar-f-color)
 			text-shadow: 0px 1px 3px rgba(0,0,0,0.2)
 			transition: background-color 0.2s ease
 			&:hover
@@ -120,31 +123,32 @@ $side-bar-w : 300px
 
 	@for $i from 1 through 4
 		.size#{$i}
-			height: #{$base-h * $i}
+			height: #{$side-bar-menu-item-h * $i}
 			a
-				height: #{$base-h * $i}
-				line-height: #{$base-h * $i}
+				height: #{$side-bar-menu-item-h * $i}
+				line-height: #{$side-bar-menu-item-h * $i}
 
 #main-content
 	margin-left: $side-bar-w
-	@extend .p8
-
+	padding: 8px 8px 8px 20px
 
 @import url("http://fonts.googleapis.com/css?family=Raleway:100")
 
-h1.title
+.title
 	margin-top: 30px
 	margin-right: 40px
 	margin-bottom: 60px
 	color : #ecf0f1
 	text-align: right
 	font-family: 'Raleway', sans-serif
+	a
+		@include a-plain
 
-h1.primary-title
+.primary-title
 	font-size: 100px
 	line-height: 80px
 
-h1.secondary-title
+.secondary-title
 	font-size: 80px
 
 
@@ -177,4 +181,72 @@ table
 			text-align: left
 		
 
+$entry-title-h : 40px
+$entry-title-f-size : 40px
+$entry-sub-h : 20px
+$entry-sub-f-size : 20px
+$entry-h : $entry-title-h + $entry-sub-h
+$pagination-h : 40px
+.entry-list
+	padding: 0 20px
+	.entry-item
+		@include clearfix
+		height: $entry-h
+		color : #ecf0f1
+		font-weight: 100
+		text-shadow: 0 1px 3px rgba(0,0,0,0.4)
 
+		margin-top: 20px
+		&:nth-child(0)
+			margin-top: 0
+		.entry-title
+			font-size: $entry-title-f-size
+			height: $entry-title-h
+			line-height: $entry-title-h
+			a 
+				color : #ecf0f1
+				text-decoration: none
+				height: 100%
+				// display: block
+
+		.entry-item-sub
+			// @extend .right
+			margin-left: 50%
+			height: $entry-sub-h
+			line-height: $entry-sub-h
+			.author, .pub-date
+				font-size: $entry-sub-f-size
+
+	.pagination
+		@include clearfix
+		height: $pagination-h
+		margin-bottom: 16px
+		.next, .prev
+			font-size: 40px
+			font-family: 'Raleway', sans-serif
+			a
+				@include a-plain(#ecf0f1)
+
+		.next
+			float: right
+		.prev
+			float: left
+
+.entry
+	text-shadow: 0 1px 3px rgba(0,0,0,0.4)
+	color : #ecf0f1
+	$max : 5
+	@for $i from 1 through $max
+		$base : 6
+		h#{$i}
+			$size : #{16 + ($max - $i)*$base}px
+			font-size: $size
+			line-height: $size + 16px
+	.sub-data
+		font-size: 20px
+		@extend .right
+		.author, .pub-date
+
+	p
+		font-size: 16px
+		line-height: 2em

@@ -8,7 +8,7 @@ def mail(request):
     if request.method == 'POST':
         return http.HttpResponse('ms.hokudai@gmail.com', mimetype='text/plain')
     else:
-        return http.HttpResponse('ms.hokudai@gmail.com', mimetype='text/plain')
+        return http.HttpResponseForbidden()
 
 
 def home(request):

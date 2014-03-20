@@ -2,8 +2,16 @@
 <html lang="ja">
 <meta charset="UTF-8">
 <meta name="robots" content="noindex,nofollow">
-<link rel="stylesheet" href="{{STATIC_URL}}css/common.css">
 <script src="{{STATIC_URL}}js/jquery-2.0.3.min.js"></script>
+<link rel="stylesheet" href="{{STATIC_URL}}font-awesome/css/font-awesome.min.css" type="text/css" />
+<link rel="stylesheet" href="{{STATIC_URL}}owl-carousel/owl.carousel.css">
+<link rel="stylesheet" href="{{STATIC_URL}}owl-carousel/owl.theme.css">
+<script src="{{STATIC_URL}}owl-carousel/owl.carousel.js"></script>
+<link rel="stylesheet" href="{{STATIC_URL}}fancybox/source/jquery.fancybox.css?v=2.1.5" type="text/css" media="screen" />
+<link rel="stylesheet" href="{{STATIC_URL}}fancybox/source/helpers/jquery.fancybox-buttons.css?v=1.0.5" type="text/css" media="screen" />
+<script src="{{STATIC_URL}}fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+<link rel="stylesheet" href="{{STATIC_URL}}css/common.css">
+<script src="{{STATIC_URL}}js/common.js"></script>
 <title>{%block title%}ミス北大2014{%endblock%}</title>
 {%block head%}{%endblock%}
 {%block script%}{%endblock%}
@@ -13,6 +21,10 @@
 <div id="side-bar">	
 	<div class="menu-item">
 		<a href="{%url "home" %}">HOME</a>
+	</div>
+
+	<div class="menu-item">
+		<a href="{%url "blog.home" %}">BLOG</a>		
 	</div>
 
 	<div class="menu-item">
