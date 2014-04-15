@@ -55,20 +55,26 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
 html {
   height: 100%;
   background-color: #eeeeee;
-  position: relative;
-  background-attachment: fixed;
-  background-image: url(../img/bg.jpg);
-  background-repeat: no-repeat;
-  background-position: center center;
-  -webkit-background-size: cover;
-  background-size: cover;
-  color: red; }
+  position: relative; }
 
 body {
   font-family: "メイリオ", "Meiryo", "Hiragino Kaku Gothic ProN", "ヒラギノ角ゴ ProN W3";
   height: 100%;
   background-color: transparent;
   font-size: 20px; }
+
+#bg {
+  z-index: -1;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url(../img/bg.jpg);
+  background-repeat: no-repeat;
+  background-position: center center;
+  -webkit-background-size: cover;
+  background-size: cover; }
 
 .content p {
   line-height: 1.6em;
