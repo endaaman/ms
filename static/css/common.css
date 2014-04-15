@@ -95,6 +95,10 @@ body {
   line-height: 90px;
   text-align: center;
   font-family: "Cinzel", serif; }
+@media (max-width: 768px) {
+  .top h2 {
+    font-size: 54px;
+    line-height: 72px; } }
 .top .content {
   margin: 40px 0; }
   .top .content .message {
