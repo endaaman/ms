@@ -97,8 +97,10 @@ body {
   font-family: "Cinzel", serif; }
 .top .content {
   margin: 40px 0; }
-  .top .content p {
-    color: #444444; }
+  .top .content .message {
+    padding: 16px; }
+    .top .content .message p {
+      color: #444444; }
 
 .footer .content {
   padding: 16px;
