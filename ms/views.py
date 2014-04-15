@@ -1,12 +1,14 @@
 from django import http
 from django.shortcuts import render, render_to_response
 from django.template import RequestContext
-from django.views.decorators.csrf import csrf_protect
+from django.views.decorators.csrf import csrf_exempt
+from django.views.generic import base
 
-
+@csrf_exempt
 def mail(request):
+    return http.HttpResponse('n/a', mimetype='text/plain')
     if request.method == 'POST':
-        return http.HttpResponse('ms.hokudai@gmail.com', mimetype='text/plain')
+        return http.HttpResponse('n/a', mimetype='text/plain')
     else:
         return http.HttpResponseForbidden()
 

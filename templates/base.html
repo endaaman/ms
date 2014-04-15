@@ -12,41 +12,10 @@
 <script src="{{STATIC_URL}}fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
 <link rel="stylesheet" href="{{STATIC_URL}}css/common.css">
 <script src="{{STATIC_URL}}js/common.js"></script>
-<title>{%block title%}ミス北大2014{%endblock%}</title>
+<title>{%block title%}Ms.Hokkaido Univ. 2014{%endblock%}</title>
 {%block head%}{%endblock%}
 {%block script%}{%endblock%}
 <body>
-<div id="bg-container"></div>
-
-<div id="side-bar">	
-	<div class="menu-item">
-		<a href="{%url "home" %}">HOME</a>
-	</div>
-
-	<div class="menu-item">
-		<a href="{%url "blog.home" %}">BLOG</a>		
-	</div>
-
-	<div class="menu-item">
-		<a href="/">MENU1</a>		
-	</div>
-
-	<div class="menu-item">
-		<a href="/">MENU2</a>		
-	</div>
-
-	<div class="menu-item">
-		<a href="{%url "about" %}">ABOUT</a>		
-	</div>
-
-	<div class="bottom-guide">
-		<div class="menu-item size2">
-			<a href="/">LOGO SPACE</a>
-		</div>		
-	</div>
-</div>
-<div id="main-content">
 {%block content%}{%endblock%}
-</div>
 </body>
 </html>

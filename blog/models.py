@@ -3,6 +3,7 @@ from django.db import models
 from django import forms
 from django.utils import html
 import markdown2
+from django import forms
 
 
 class Blog(models.Model):
@@ -32,4 +33,27 @@ class Blog(models.Model):
     def message_stripped(self):
         return self.raw_message[0:40]
 
+
+
+
+class UrlNameError(forms.ValidationError):
+    def __init__(self):
+        return forms.ValidationError.__init__(self, 'This name is already allocated.')
+
+
+class BlogForm():
+
+    def clear_name(self):
+        base = self.data.get('url_name', None)
+        if base:
+            b = Blog.objects.filter(url_name=base)
+            if len(b) > 0:
+                raise UrlNameError()
+        return base
+
+    class Meta:
+        model = Blog
+        exclude = ('message_html', 'raw_message',)
+        def __init__(self):
+            self.help_texts['url_name'] = 'URLに使われる名前です。「test」の場合はhttp:/frate.tk/blog/test/が記事のURLになります。'
 

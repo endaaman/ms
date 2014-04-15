@@ -1,252 +1,209 @@
-@import "compass"
 @import "compass/reset"
 
-// mixin functions
-@mixin clearfix
-	&:after
-		content: ""
-		display: block
-		clear: both
-
-@mixin a-plain($color: inherit)
-	color: $color
-	text-decoration: none
-
-// mixin classes
-
-@for $i from 1 through 10
-	$base-size : 2
-	.p#{$base-size * $i}
-		padding: #{$base-size * $i}px
-
-@for $i from 1 through 10
-	$base-size : 2
-	.m#{$base-size * $i}
-		margin: #{$base-size * $i}px
-
-@for $i from 2 through 8
-	$base-size : 4
-	.f#{$base-size * $i}
-		font-size: #{$base-size * $i}px
-
-
-.left
-	text-align: left
-.center
-	text-align: center
-.right
-	text-align: right
-
-.centered
-	margin-right: auto
-	margin-left: auto
-
-// stylings
+*
+    box-sizing: border-box
 
 html
-	height: 100%
-	background-color: #eee
-	position: relative
+    height: 100%
+    background-color: #eee
+    position: relative
+
+    background-attachment: fixed
+    background-image: url(../img/bg.jpg)
+    background-repeat: no-repeat
+    background-position: center center
+    background-size: cover
+
+    color : red
+
 
 body
-	font-family: "メイリオ", "Meiryo", "Hiragino Kaku Gothic ProN", "ヒラギノ角ゴ ProN W3"
-	height: 100%
-	min-height: 600px
-	background-color: transparent
-	@extend .f16 
+    font-family: "メイリオ", "Meiryo", "Hiragino Kaku Gothic ProN", "ヒラギノ角ゴ ProN W3"
+    height: 100%
+    background-color: transparent
+    font-size: 20px
 
-#bg-container
-	z-index: -1
-	position: fixed
-	left: 0
-	top: 0
-	width: 100%
-	height: 100%	
-	
-	background-image: url("../img/bg.jpg")
-	background-repeat: no-repeat
-	background-position: center center
-	background-size: cover
+.content
+    p
+        line-height: 1.6em
+        margin: 16px 0
 
 
 
+@import url(http://fonts.googleapis.com/css?family=Cinzel)
 
-@import url("http://fonts.googleapis.com/css?family=Alegreya+Sans+SC:100")
+.top
+    .link-tips
+        margin-top: 8px
+        text-align: center
+        .link-tip
+            font-size: 42px
+            margin: 0 16px
+            a
+                color: #000
+                &:hover
+                    color: #999
 
-$side-bar-border-color : #f9f9f9
-$side-bar-f-color : #f9f9f9
-$side-bar-bg-color: rgba(255,255,255,0.2)
+    .logo
+        text-align: center
+        .logo-img
+            width: 256px
+            height: 256px
 
-$side-bar-w : 300px
+    h2
+        color: #000
+        font-size: 72px
+        line-height: 90px
+        text-align: center
+        font-family: 'Cinzel', serif
 
-$side-bar-menu-item-h : 80px
-$side-bar-f-size : 48px
-
-
-#side-bar
-	position: fixed
-	left: 0
-	top: 0
-	width: $side-bar-w
-	height: 100%
-	min-height: 600px
-	background-color: $side-bar-bg-color
-	border-right: 1px solid $side-bar-border-color
-	
-	
-
-	.bottom-guide
-		position: absolute
-		bottom: 0
-		left: 0
-		width: $side-bar-w
-		.menu-item
-			border-bottom: 0
-			border-top: 1px solid $side-bar-border-color
-	
-	.menu-item
-		width: $side-bar-w
-		height: $side-bar-menu-item-h
-		border-bottom: 1px solid $side-bar-border-color
-		font-family: 'Alegreya Sans SC'
-		font-size: $side-bar-f-size
-		a
-			display: block
-			height: $side-bar-menu-item-h
-			line-height: $side-bar-menu-item-h
-			text-align: center
-			@include a-plain($side-bar-f-color)
-			text-shadow: 0px 1px 3px rgba(0,0,0,0.2)
-			transition: background-color 0.2s ease
-			&:hover
-				background-color: rgba(255,255,255,0.3)
-
-	@for $i from 1 through 4
-		.size#{$i}
-			height: #{$side-bar-menu-item-h * $i}
-			a
-				height: #{$side-bar-menu-item-h * $i}
-				line-height: #{$side-bar-menu-item-h * $i}
-
-#main-content
-	margin-left: $side-bar-w
-	padding: 8px 8px 8px 20px
-
-@import url("http://fonts.googleapis.com/css?family=Raleway:100")
-
-.title
-	margin-top: 30px
-	margin-right: 40px
-	margin-bottom: 60px
-	color : #ecf0f1
-	text-align: right
-	font-family: 'Raleway', sans-serif
-	a
-		@include a-plain
-
-.primary-title
-	font-size: 100px
-	line-height: 80px
-
-.secondary-title
-	font-size: 80px
+    .content
+        margin: 40px 0
+        p
+            color: #444
 
 
-$frame-bg-color: rgba(255,255,255,0.6)
-$frame-f-color: #442
+
+@mixin peep($top, $size, $color, $mb : 0px)
+    overflow: hidden
+    position: relative
+    &:before
+        content: ''        
+        display: block
+        height: $top + $size + $mb
+
+    .peep
+        z-index: -1
+        content: ''
+        $big : 4000px
+        $r : $big / 2 
+        $b : $r - $size / 2
+
+        position: absolute
+        display: block
+        left: 50%
+        margin: 0 0 0 (-$r)
+
+        top: - $b + $top
+        width: $r * 2
+        height: $r * 2
+        border-radius: $r
+        border-color: $color
+        border-width: $b
+        border-style: solid
 
 
-table
-	border-collapse: separate
-	border-spacing: 12px 6px
-	tr
-		display: table-row
-		vertical-align: inherit
-		border-color: inherit
-		th,td
-			background-color: $frame-bg-color
-			vertical-align: middle
-			padding: 16px
-			// border: 1px solid $side-bar-border-color
-			height: 80px
-			line-height: 1.5em
+.footer
+    .content
+        padding: 16px
+        @include peep(16px, 160px, #55C394)
+        .peep .icon
+            text-align: center
+            font-size: 72px    
+            line-height: 160px
+        p
+            color: #fafafa
 
-		th
-			width: 200px
-			text-align: center
-		
-		td
-			width: 280px
-			height: 60px
-			text-align: left
-		
+        height: 540px
 
-$entry-title-h : 40px
-$entry-title-f-size : 40px
-$entry-sub-h : 20px
-$entry-sub-f-size : 20px
-$entry-h : $entry-title-h + $entry-sub-h
-$pagination-h : 40px
-.entry-list
-	padding: 0 20px
-	.entry-item
-		@include clearfix
-		height: $entry-h
-		color : #ecf0f1
-		font-weight: 100
-		text-shadow: 0 1px 3px rgba(0,0,0,0.4)
+    .welcome
+        .icon
+            color: #E97040
+    .candidate
+        .icon
+            color: #FBC
+    .about
+        .icon
+            color: #3D86BE
 
-		margin-top: 20px
-		&:nth-child(0)
-			margin-top: 0
-		.entry-title
-			font-size: $entry-title-f-size
-			height: $entry-title-h
-			line-height: $entry-title-h
-			a 
-				color : #ecf0f1
-				text-decoration: none
-				height: 100%
-				// display: block
 
-		.entry-item-sub
-			// @extend .right
-			margin-left: 50%
-			height: $entry-sub-h
-			line-height: $entry-sub-h
-			.author, .pub-date
-				font-size: $entry-sub-f-size
+    .copyright
+        color: #fafafa
+        background-color: #55C394
+        text-align: center
+        font-size: 12px
+        line-height: 20px
+        height: 20px
 
-	.pagination
-		@include clearfix
-		height: $pagination-h
-		margin-bottom: 16px
-		.next, .prev
-			font-size: 40px
-			font-family: 'Raleway', sans-serif
-			a
-				@include a-plain(#ecf0f1)
 
-		.next
-			float: right
-		.prev
-			float: left
 
-.entry
-	text-shadow: 0 1px 3px rgba(0,0,0,0.4)
-	color : #ecf0f1
-	$max : 5
-	@for $i from 1 through $max
-		$base : 6
-		h#{$i}
-			$size : #{16 + ($max - $i)*$base}px
-			font-size: $size
-			line-height: $size + 16px
-	.sub-data
-		font-size: 20px
-		@extend .right
-		.author, .pub-date
+.container
+    max-width: 800px
+    margin: 0 auto 
 
-	p
-		font-size: 16px
-		line-height: 2em
+.container:after,
+.row:after, 
+.col:after, 
+.clr:after, 
+.group:after
+    content: "" 
+    display: table 
+    clear: both 
+
+
+.row
+    padding-bottom: 0em
+
+.col
+    display: block
+    float: left
+    width: 100%
+
+
+@media ( min-width : 768px )
+    .gutters .col
+        margin-left: 2%
+    
+    .gutters .col:first-child
+        margin-left: 0 
+
+@media ( min-width : 768px )
+    .span_1
+        width: 8.33333333333% 
+    .span_2
+        width: 16.6666666667% 
+    .span_3
+        width: 25% 
+    .span_4
+        width: 33.3333333333% 
+    .span_5
+        width: 41.6666666667% 
+    .span_6
+        width: 50% 
+    .span_7
+        width: 58.3333333333% 
+    .span_8
+        width: 66.6666666667% 
+    .span_9
+        width: 75% 
+    .span_10
+        width: 83.3333333333% 
+    .span_11
+        width: 91.6666666667% 
+    .span_12
+        width: 100% 
+
+    .gutters .span_1
+        width: 6.5% 
+    .gutters .span_2
+        width: 15.0% 
+    .gutters .span_3
+        width: 23.5% 
+    .gutters .span_4
+        width: 32.0% 
+    .gutters .span_5
+        width: 40.5% 
+    .gutters .span_6
+        width: 49.0% 
+    .gutters .span_7
+        width: 57.5% 
+    .gutters .span_8
+        width: 66.0% 
+    .gutters .span_9
+        width: 74.5% 
+    .gutters .span_10
+        width: 83.0% 
+    .gutters .span_11
+        width: 91.5% 
+    .gutters .span_12
+        width: 100% 
