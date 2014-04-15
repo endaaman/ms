@@ -112,11 +112,13 @@ body {
     .top .content .message p {
       color: #444444; }
 
+@media (min-width: 768px) {
+  .footer {
+    overflow: hidden; } }
 .footer .content {
   padding: 16px;
   overflow: hidden;
-  position: relative;
-  height: 540px; }
+  position: relative; }
   .footer .content:before {
     content: "";
     display: block;
@@ -141,6 +143,10 @@ body {
     line-height: 160px; }
   .footer .content p {
     color: #fafafa; }
+  @media (min-width: 768px) {
+    .footer .content {
+      padding-bottom: 32768px;
+      margin-bottom: -32768px; } }
 .footer .welcome .icon {
   color: #e97040; }
 .footer .candidate .icon {

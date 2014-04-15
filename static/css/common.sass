@@ -106,6 +106,9 @@ body
 
 
 .footer
+    @media ( min-width : 768px )
+        overflow: hidden
+
     .content
         padding: 16px
         @include peep(16px, 160px, #55C394)
@@ -116,7 +119,10 @@ body
         p
             color: #fafafa
 
-        height: 540px
+        @media ( min-width : 768px )
+            padding-bottom: 32768px
+            margin-bottom: -32768px
+        // height: 540px
 
     .welcome
         .icon
@@ -136,6 +142,10 @@ body
         font-size: 12px
         line-height: 20px
         height: 20px
+
+
+
+
 
 
 
