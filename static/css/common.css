@@ -161,17 +161,13 @@ body {
   line-height: 20px;
   height: 20px; }
 
-.container {
-  max-width: 800px;
-  margin: 0 auto; }
-
 .container:after,
 .row:after,
 .col:after,
 .clr:after,
 .group:after {
   content: "";
-  display: table;
+  display: block;
   clear: both; }
 
 .row {
