@@ -7,7 +7,7 @@ $(function() {
         e = $(this)
         $.ajax({
             type: 'POST',
-            url: '/mail/' + $(this).data('mail-type') + '/',
+            url: '/mail/' + $(this).data('addr-type') + '/',
         }).done(function( t ) {
             e.text(t).attr('href', 'mailto:'+t)
         }).fail(function(jqXHR, textStatus, errorThrown){
@@ -25,17 +25,17 @@ $(function() {
 
 <div class="top row">
 
-    <div class="col span_24 logo">
+    <div class="col span_12 logo">
         <img class="logo-img" src="{{STATIC_URL}}img/logo.png" alt="logo" />        
     </div>
 
-    <h2 class="col span_24">Revival</h2>
-    <h2 class="col span_24">of</h2>
-    <h2 class="col span_24">Ms.Hokkaido Univ.</h2>
+    <h2 class="col span_12">Revival</h2>
+    <h2 class="col span_12">of</h2>
+    <h2 class="col span_12">Ms.Hokkaido Univ.</h2>
 
-    <div class="col span24 row gutters">
-        <div class="col span_4">　</div>
-        <div class="col span_16 content message">
+    <div class="col span12 row gutters">
+        <div class="col span_2">　</div>
+        <div class="col span_8 content message">
             <p>　ミスキャンパスやミスコンテストは多くの大学で開催され、いずれも大きな注目を集めるプロジェクトです。そのイベントを、国立大学最大の学部数と道内最大規模の学生数を誇るこの北海道大学で開催しようと、私たちの団体は発足しました。</p>
             <p>　Ms.Hokkaido Univ.2014の称号は、北海道大学内の学生や職員はもちろん、大学外さらには道外の一般人をも対象にした投票で決定します。</p>
             <p>　またこのプロジェクトは、7月のコンテストで北海道大学から女性を選出するだけに留まるものではありません。コンテストの優勝者がさまざまな学生団体や企業の広報・イベントなどに出演させていただくことで、Ms.Hokkaido Univ.2014を通して社会貢献活動の活性化と、学生同士や学生と社会が協力する場を生むことを目指し、私たちは活動していきます。</p>
@@ -43,7 +43,6 @@ $(function() {
             </p>
             <p class="center f16">Ms.Hokkaido Univ.2014実行委員会 代表 松尾 櫂</p>
         </div>        
-        <div class="col span_4">　</div>
     </div>
 </div>
 
@@ -52,20 +51,20 @@ $(function() {
 <div class="info row">
 
 
-    <div class="col span_8 content recruit">
+    <div class="col span_4 content recruit">
         <div class="peep"><div class="icon"><i class="fa fa-users"></i></div></div>
         <h3>Recruit</h3>
         <p>大学ならではのことをしたい！イベントを1から作り上げてみたい！とにかく楽しいことをしたい！そんな君を求めています！是非、説明会へお越しください。また、疑問を持った方や少しでも興味を持った方は、お気軽に下記メールアドレスまでご連絡ください。</p>
-        <div><a class="mail" data-mail-type="recruit">xxxxxxxxxxxxx</a></div>
+        <div><a class="mail" data-addr-type="recruit">xxxxxxxxxxxxx</a></div>
     </div>
 
-    <div class="col span_8 content candidate">
+    <div class="col span_4 content candidate">
         <div class="peep"><div class="icon"><i class="fa fa-heart"></i></div></div>
         <h3>Candidate</h3>
         <p>候補の選出については現在準備中です。</p>
     </div>
 
-    <div class="col span_8 content about">
+    <div class="col span_4 content about">
         <div class="peep"><div class="icon"><i class="fa fa-check"></i></div></div>
         <h3>About us</h3>
         <ul>
@@ -80,13 +79,13 @@ $(function() {
 
 <div class="footer">
     <div class="row socialbuttons">
-        <div class="col span_6">
+        <div class="col span_3">
             <div class="socialbutton google">
                 <div class="g-plusone" data-size="medium" data-annotation="inline" data-width="120" data-href="http://mshu2014.gallery"></div>
                 <script>window.___gcfg = {lang: 'ja'};(function() {var po = document.createElement('script');po.type = 'text/javascript'; po.async = true;po.src = 'https://apis.google.com/js/platform.js';var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);})();</script>
             </div>            
         </div> 
-        <div class="col span_6">
+        <div class="col span_3">
             <div class="socialbutton twitter">
                 <a href="https://twitter.com/share" class="twitter-share-button" data-url="http://mshu2014.gallery" data-via="mshu2014" data-lang="ja" data-related="mshu2014" data-hashtags="mshu2014">ツイート</a>
                 <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
@@ -94,7 +93,7 @@ $(function() {
         </div> 
 
 
-        <div class="col span_6">
+        <div class="col span_3">
 
             <div class="socialbutton facebook">
                 <div class="fb-like" data-href="https://www.facebook.com/mshu2014" data-layout="button_count" data-action="like" data-show-faces="true" data-share="false"></div>
@@ -105,7 +104,7 @@ $(function() {
         </div> 
 
 
-        <div class="col span_6">
+        <div class="col span_3">
             <div class="socialbutton hatena">
                 <a href="http://b.hatena.ne.jp/entry/mshu2014.gallery" class="hatena-bookmark-button" data-hatena-bookmark-title="Ms.Hokkaido Univ.2014" data-hatena-bookmark-layout="standard-balloon" data-hatena-bookmark-lang="ja" title="このエントリーをはてなブックマークに追加"><img src="http://b.st-hatena.com/images/entry-button/button-only@2x.png" alt="このエントリーをはてなブックマークに追加" width="20" height="20" style="border: none;" /></a>
                 <script type="text/javascript" src="http://b.st-hatena.com/js/bookmark_button.js" charset="utf-8" async="async"></script>          

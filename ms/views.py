@@ -6,13 +6,13 @@ from django.views.generic import base
 
 
 @csrf_exempt
-def mail(request, mail_type=None):
-    if request.method == 'POST' and mail_type:
+def mail(request, addr_type=None):
+    if request.method == 'POST' and addr_type:
         addr_table = dict(
             main='2014mshu@gmail.com',
             recruit='shinkan.2014mshu@gmail.com'
         )
-        addr = addr_table.get(mail_type, None)
+        addr = addr_table.get(addr_type, None)
         if addr:
             return http.HttpResponse(addr, content_type='text/plain')
 
