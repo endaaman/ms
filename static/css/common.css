@@ -65,7 +65,7 @@ body {
   font-size: 20px; }
 
 #bg {
-  z-index: -1;
+  z-index: -100;
   position: fixed;
   top: 0;
   left: 0;
@@ -160,16 +160,15 @@ body {
   @media (min-width: 600px) {
     .info {
       overflow: hidden; } }
-  .info .content {
-    padding: 16px;
+  .info .content .peep {
     overflow: hidden;
     position: relative; }
-    .info .content:before {
+    .info .content .peep:before {
       content: "";
       display: block;
       height: 176px; }
-    .info .content .peep {
-      z-index: -1;
+    .info .content .peep .peep-hole {
+      z-index: 0;
       content: "";
       position: absolute;
       display: block;
@@ -186,16 +185,19 @@ body {
       text-align: center;
       font-size: 72px;
       line-height: 160px; }
+  .info .content .message {
+    padding: 16px;
+    background-color: #55c394; }
     @media (min-width: 600px) {
-      .info .content {
+      .info .content .message {
         padding-bottom: 32768px;
         margin-bottom: -32768px; } }
-    .info .content h3 {
-      font-family: "Alegreya Sans SC", sans-serif;
-      font-size: 32px;
-      text-align: center; }
-    .info .content .mail {
-      font-size: 16px; }
+  .info .content h3 {
+    font-family: "Alegreya Sans SC", sans-serif;
+    font-size: 32px;
+    text-align: center; }
+  .info .content .mail {
+    font-size: 16px; }
   .info .recruit .icon {
     color: #e97040; }
   .info .candidate .icon {

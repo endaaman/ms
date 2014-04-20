@@ -23,7 +23,7 @@ body
     font-size: 20px
 
 #bg
-    z-index: -1
+    z-index: -100
     position: fixed
     top: 0
     left: 0
@@ -109,6 +109,8 @@ body
             color: #222
 
 
+
+
 @mixin peep($top, $size, $color, $mb : 0px)
     overflow: hidden
     position: relative
@@ -117,8 +119,8 @@ body
         display: block
         height: $top + $size + $mb
 
-    .peep
-        z-index: -1
+    .peep-hole
+        z-index: 0
         content: ''
         $big : 4000px
         $r : $big / 2 
@@ -137,6 +139,7 @@ body
         border-width: $b
         border-style: solid
 
+
 @import url("http://fonts.googleapis.com/css?family=Alegreya+Sans+SC:100")
 
 .info
@@ -146,17 +149,20 @@ body
         overflow: hidden
 
     .content
-        padding: 16px
-        @include peep(16px, 160px, #55C394)
-        .peep .icon
-            text-align: center
-            font-size: 72px    
-            line-height: 160px
+        .peep
+            @include peep(16px, 160px, #55C394)
+            .icon
+                text-align: center
+                font-size: 72px    
+                line-height: 160px
 
-        @media ( min-width : $limit )
-            padding-bottom: 32768px
-            margin-bottom: -32768px
 
+        .message
+            padding: 16px
+            background-color: #55C394
+            @media ( min-width : $limit )
+                padding-bottom: 32768px
+                margin-bottom: -32768px
         h3
             font-family: 'Alegreya Sans SC', sans-serif
             font-size: 32px
@@ -175,6 +181,9 @@ body
     .about
         .icon
             color: #3D86BE
+
+
+
 
 
 .footer
