@@ -209,7 +209,7 @@ body {
   background-color: #55c394; }
   .footer .socialbuttons {
     margin: 0 auto;
-    width: 600px; }
+    max-width: 600px; }
     .footer .socialbuttons .socialbutton {
       margin: 0 auto; }
     .footer .socialbuttons .google {
@@ -223,14 +223,11 @@ body {
   .footer .copyright {
     text-align: center;
     font-size: 12px;
-    line-height: 20px;
-    height: 20px; }
+    line-height: 20px; }
 
 .container:after,
 .row:after,
-.col:after,
-.clr:after,
-.group:after {
+.col:after {
   content: "";
   display: block;
   clear: both; }
