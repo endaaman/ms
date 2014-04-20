@@ -77,6 +77,36 @@ body {
   -webkit-background-size: cover;
   background-size: cover; }
 
+.left {
+  text-align: left; }
+
+.center {
+  text-align: center; }
+
+.right {
+  text-align: right; }
+
+.f8 {
+  font-size: 8px; }
+
+.f12 {
+  font-size: 12px; }
+
+.f16 {
+  font-size: 16px; }
+
+.f20 {
+  font-size: 20px; }
+
+.f24 {
+  font-size: 24px; }
+
+.f28 {
+  font-size: 28px; }
+
+.f32 {
+  font-size: 32px; }
+
 .content p {
   line-height: 1.6em;
   margin: 16px 0; }
