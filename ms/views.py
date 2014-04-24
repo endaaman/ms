@@ -7,10 +7,12 @@ from django.views.generic import base
 
 @csrf_exempt
 def mail(request, addr_type=None):
-    if request.method == 'POST' and addr_type:
+    # if request.method == 'POST' and addr_type:
+    if addr_type:
         addr_table = dict(
             main='2014mshu@gmail.com',
-            recruit='shinkan.2014mshu@gmail.com'
+            recruit='shinkan.2014mshu@gmail.com',
+            entry='entry.2014mshu@gmail.com'
         )
         addr = addr_table.get(addr_type, None)
         if addr:
