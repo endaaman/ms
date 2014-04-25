@@ -35,3 +35,7 @@ def contact(request):
     return render_to_response('contact.html',
                               {},
                               context_instance=RequestContext(request))
+
+
+def anal(request):
+    return http.HttpResponse('google-site-verification: googlebf07e42e7005708f.html', content_type='text/html')
