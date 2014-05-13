@@ -11,7 +11,7 @@ def mail(request, addr_type=None):
     if addr_type:
         addr_table = dict(
             main='mshu2014@gmail.com',
-            recruit='mshu2014mshu@gmail.com',
+            recruit='shinkan.2014mshu@gmail.com',
             entry='mshu2014.entry@gmail.com'
         )
         addr = addr_table.get(addr_type, None)
