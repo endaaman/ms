@@ -4,6 +4,7 @@ from django.template import RequestContext
 from django.views.decorators.csrf import csrf_exempt
 from django.views.generic import base
 
+from candidate.models import Candidate
 
 @csrf_exempt
 def mail(request, addr_type=None):
@@ -23,8 +24,11 @@ def mail(request, addr_type=None):
 
 
 def home(request):
+    candidates = Candidate.objects.order_by('-entry_number')
     return render_to_response('home.html',
-                              {},
+                              dict(
+                                  candidates=candidates
+                              ),
                               context_instance=RequestContext(request))
 
 def about(request):

@@ -1,130 +1,176 @@
 {%extends "base.html"%}
 {%block script%}
 <script type="text/javascript">
-$(function() {
 
+function open_c(e){
+    $('.candidate').removeClass('open')
+    $(e).addClass('open')
+    $('.candidates').addClass('open')
+    $(".content").fadeOut(200)
+    $($(e).data('content-class')).fadeIn(200)
+}
+function close_c(e){
+    $(e).removeClass('open')
+    $('.candidates').removeClass('open')
+    $(".content").fadeOut(200)
+    $('.content-main').fadeIn(200)
+}
+$(function() {
+    $(".content").hide();
+    $(".content.content-main").show();
+    
     $('.mail').each(function(){
         $.ajax({
             type: 'POST',
             url: '/mail/' + $(this).data('addr-type') + '/',
             context: this,
         }).done(function( t ) {
-            $(this).text(t).attr('href', 'mailto:'+t)
+            $(this).text(t).attr('href', 'mailto:'+t);
         }).fail(function(jqXHR, textStatus, errorThrown){
-            console.log(errorThrown)
+            console.log(errorThrown);
         });        
+    })
+
+    $('.candidate').on('click',function(){
+        if($(this).hasClass('open')){
+            close_c(this);
+        }else{
+            open_c(this);
+        }
     })
 
 });
 </script>
 {%endblock%}
 {%block content%}
+<div id="page-loading">
+    <div class="loading"></div>
+</div>
 <div id="bg"></div>
-
-<div class="header"></div>
-
-<div class="top row">
-
-    <div class="col span_12 logo">
-        <img class="logo-img" src="{{STATIC_URL}}img/logo.png" alt="logo" />        
+<div id="wrap">
+<div class="header row">
+    <div class="col span_12 center">
+        <img class="logo-img" src="{{STATIC_URL}}img/logo-color.png" alt="logo" />    
     </div>
 
-    <h2 class="col span_12">Revival</h2>
-    <h2 class="col span_12">of</h2>
-    <h2 class="col span_12">Ms.Hokkaido Univ.</h2>
 
-    <div class="col span12 row gutters">
-        <div class="col span_2">　</div>
-        <div class="col span_8 content message">
-            <p>　Ms.Hokkaido Univ.2014実行委員会、代表の松尾です。私たちの団体はミスキャンパスという大きな注目を集めるプロジェクトを、道内最大のこの北海道大学で開催することを目的に発足しました。現在はメインイベントである7月のコンテストの運営を中心に活動しておりますが、その後も優勝者というモデルを媒体に様々な団体や企業の広報・イベントに出演させていただき、多方面にイベントを展開させていきたいと考えております。</p>
-            <p>　ミスキャンパスは、コンテストでの投票を例として、観客の方々の話題性を礎として盛り上がる企画です。このページをご覧の皆さんにも、この活動に少しでも興味を持ち、ぜひともこのプロジェクトを盛り上げる一員となっていただきたいです。</p>
-            <p class="center f16">Ms.Hokkaido Univ.2014実行委員会 代表 松尾 櫂</p>
-        </div>        
+    <div class="col span_3">　</div>
+
+    <div class="col span_2">
+        <div class="socialbutton google">
+            <div class="g-plusone" data-size="medium" data-annotation="inline" data-width="120" data-href="http://mshu2014.gallery"></div>
+            <script>window.___gcfg = {lang: 'ja'};(function() {var po = document.createElement('script');po.type = 'text/javascript'; po.async = true;po.src = 'https://apis.google.com/js/platform.js';var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);})();</script>
+        </div>            
+    </div> 
+
+    <div class="col span_2">
+        <div class="socialbutton twitter">
+            <a href="https://twitter.com/mshu2014" class="twitter-follow-button" data-show-count="false" data-lang="ja">@mshu2014さんをフォロー</a>
+            <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+        </div>            
+    </div> 
+
+
+    <div class="col span_2">
+        <div class="socialbutton facebook">
+            <div class="fb-like" data-href="http://mshu2014.gallery/" data-width="140" data-layout="button_count" data-action="like" data-show-faces="false" data-share="true"></div>
+            <div id="fb-root"></div>
+            <script>(function(d, s, id) {var js, fjs = d.getElementsByTagName(s)[0];if (d.getElementById(id)) return;js = d.createElement(s); js.id = id;js.src = "//connect.facebook.net/ja_JP/all.js#xfbml=1";fjs.parentNode.insertBefore(js, fjs);}(document, 'script', 'facebook-jssdk'));</script>
+        </div>
+    </div> 
+
+
+</div>
+
+<div class="candidates">
+    <div class="candidate candidate-no1" data-content-class=".content-no1">
+        <div class="bg"></div>
+    </div>
+    <div class="candidate candidate-no2" data-content-class=".content-no2">
+        <div class="bg"></div>
+    </div>
+    <div class="candidate candidate-no3" data-content-class=".content-no3">
+        <div class="bg"></div>
+    </div>
+    <div class="candidate candidate-no4" data-content-class=".content-no4">
+        <div class="bg"></div>
+    </div>
+    <div class="candidate candidate-no5" data-content-class=".content-no5">
+        <div class="bg"></div>
     </div>
 </div>
 
-
-
-<div class="info row">
-
-    <div class="col span_4 content recruit">
-        <div class="peep">
-            <div class="peep-hole"><div class="icon"><i class="fa fa-users"></i></div></div>            
+<div class="contents">
+    <div class="content content-main row">
+        <div class="col span_12 renewal">
+            <h1>候補者公開！</h1>
+            <p>遅ればせながら、候補者を大・大・大公開です！上の写真をクリックするとそれぞれの候補者のプロフィールなどが見ることができます。写真の追加や投票の開始については、追ってTwitterやFacebookでお知らせしていたします。上のソーシャルボタンからフォロー・シェアよろしくお願い致します！</p>            
         </div>
-        <div class="message">
-            <h3>Recruit</h3>
-            <p>大学ならではのことをしたい！イベントを1から作り上げてみたい！とにかく楽しいことをしたい！そんな君を求めています！是非、説明会へお越しください。また、疑問を持った方や少しでも興味を持った方は、お気軽に下記メールアドレスまでご連絡ください。</p>
-            <p><a class="mail" data-addr-type="recruit">xxxxxxxxxxxxx</a></p>            
-        </div>
-    </div>
 
-    <div class="col span_4 content sponsor">
-        <div class="peep">
-            <div class="peep-hole"><div class="icon"><i class="fa fa-thumbs-up"></i></div></div>
-        </div>
-        <div class="message">
-            <h3>Sponsor</h3>
-            <p>Ms.Hokkaido Univ.2014実行委員会は現在、7月のコンテストの企画・運営の費用を必要としております。そこでイベントの円滑な運営と成功に向け、あらゆる企業様からのご支援をお願いしております。Ms.Hokkaido Univ.2014の活動へのご協賛をお考えの企業様は、お手数ですが以下の連絡先までご連絡下さい。</p>
-            <p><a class="mail" data-addr-type="sponsor">xxxxxxxxxxxxx</a></p>            
-        </div>
-    </div>
-
-    <div class="col span_4 content about">
-        <div class="peep">
-            <div class="peep-hole"><div class="icon"><i class="fa fa-check"></i></div></div>
-        </div>
-        <div class="message">
-            <h3>About us</h3>
-            <ul>
-                <li>多くの人を巻き込みMs.Hokkaido Univ.2014を決めることで、北海道大学全体を活性化させる。</li>
-                <li>Ms.Hokkaido Univ.2014を通して団体や企業とのつながりを生み出す。</li>
-            </ul>
-            <p>当委員会は以上の理念を掲げ、Ms.Hokkaido Univ.2014コンテストの運営などを行っていきます。</p>
-        </div>
-    </div>
-
-</div>    
-
-<div class="footer">
-    <div class="row socialbuttons">
-
-
-        <div class="col span_3">
-            <div class="socialbutton hatena">
-                <a href="http://b.hatena.ne.jp/entry/mshu2014.gallery" class="hatena-bookmark-button" data-hatena-bookmark-title="Ms.Hokkaido Univ.2014" data-hatena-bookmark-layout="standard-balloon" data-hatena-bookmark-lang="ja" title="このエントリーをはてなブックマークに追加"><img src="http://b.st-hatena.com/images/entry-button/button-only@2x.png" alt="このエントリーをはてなブックマークに追加" width="20" height="20" style="border: none;" /></a>
-                <script type="text/javascript" src="http://b.st-hatena.com/js/bookmark_button.js" charset="utf-8" async="async"></script>          
+        <div class="col span_6 about">
+            <div class="peep">
+                <div class="peep-hole"><div class="icon"><i class="fa fa-check"></i></div></div>
             </div>
-
-        </div> 
-
-        <div class="col span_3">
-
-            <div class="socialbutton facebook">
-                <div class="fb-like" data-href="http://mshu2014.gallery/" data-width="140" data-layout="button_count" data-action="like" data-show-faces="false" data-share="true"></div>
-                <div id="fb-root"></div>
-                <script>(function(d, s, id) {var js, fjs = d.getElementsByTagName(s)[0];if (d.getElementById(id)) return;js = d.createElement(s); js.id = id;js.src = "//connect.facebook.net/ja_JP/all.js#xfbml=1";fjs.parentNode.insertBefore(js, fjs);}(document, 'script', 'facebook-jssdk'));</script>
+            <div class="message">
+                <h3>About us</h3>
+                <ul>
+                    <li>多くの人を巻き込みMs.Hokkaido Univ.2014を決めることで、北海道大学全体を活性化させる。</li>
+                    <li>Ms.Hokkaido Univ.2014を通して団体や企業とのつながりを生み出す。</li>
+                </ul>
+                <p>当委員会は以上の理念を掲げ、Ms.Hokkaido Univ.2014コンテストの運営などを行っていきます。</p>
             </div>
+        </div>
+        <div class="col span_6 sponsor">
+            <div class="peep">
+                <div class="peep-hole"><div class="icon"><i class="fa fa-thumbs-up"></i></div></div>
+            </div>
+            <div class="message">
+                <h3>Sponsor</h3>
+                <p>Ms.Hokkaido Univ.2014実行委員会は現在、7月のコンテストの企画・運営の費用を必要としております。そこでイベントの円滑な運営と成功に向け、あらゆる企業様からのご支援をお願いしております。Ms.Hokkaido Univ.2014の活動へのご協賛をお考えの企業様は、お手数ですが以下の連絡先までご連絡下さい。</p>
+                <p><a class="mail" data-addr-type="sponsor">xxxxxxxxxxxxx</a></p>            
+            </div>
+        </div>
 
-        </div> 
-
-        <div class="col span_3">
-            <div class="socialbutton twitter">
-                <a href="https://twitter.com/mshu2014" class="twitter-follow-button" data-show-count="false" data-lang="ja">@mshu2014さんをフォロー</a>
-                <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
-            </div>            
-        </div> 
 
 
-        <div class="col span_3">
-            <div class="socialbutton google">
-                <div class="g-plusone" data-size="medium" data-annotation="inline" data-width="120" data-href="http://mshu2014.gallery"></div>
-                <script>window.___gcfg = {lang: 'ja'};(function() {var po = document.createElement('script');po.type = 'text/javascript'; po.async = true;po.src = 'https://apis.google.com/js/platform.js';var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);})();</script>
-            </div>            
-        </div> 
-    </div>    
-    <div class="copyright">©2014 Ms.Hokkaido Univ.2014実行委員会 All Rights Reserved.</div>
+    </div>  
+
+    {%for c in candidates%}
+    <div class="content content-candidate content-no{{c.entry_number}}">
+        <div class="right f14">もう一度画像をクリックorタップすると説明を閉じます。</div>
+        <h2 class="center">エントリーNo.{{c.entry_number}}</h2>
+        <table>
+            <tr>
+                <th>名前</th>
+                <td>{{c.name}}</td>
+            </tr>
+            <tr>
+                <th>読み</th>
+                <td>{{c.kana}}</td>
+            </tr>
+            <tr>
+                <th>出身</th>
+                <td>{{c.hometown}}</td>
+            </tr>
+            <tr>
+                <th>学部</th>
+                <td>{{c.department}}</td>
+            </tr>
+            <tr>
+                <th>学年</th>
+                <td>{{c.grade}}年</td>
+            </tr>
+            <tr>
+                <th>血液型</th>
+                <td>{{c.blood_type}}</td>
+            </tr>
+            <tr>
+                <th>応募したキッカケ</th>
+                <td><p>{{c.motive}}</p></td>
+            </tr>
+        </table>
+    </div>
+    {%endfor%}
+
 </div>
-
-
-
 {%endblock%}

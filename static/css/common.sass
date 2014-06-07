@@ -1,115 +1,93 @@
 @import "compass/reset"
-
-
+// not use responsive then set $limit 0px
 $limit: 600px
+$limit2: 900px
 $cols: 12
 $gutters-margin: 2%
-
 @import "responsive"
 
+
+
+@import url("http://fonts.googleapis.com/css?family=Cinzel")
+@import url("http://fonts.googleapis.com/css?family=Alegreya+Sans+SC:100")
+@import url("http://fonts.googleapis.com/css?family=Open+Sans")
+@import url("http://fonts.googleapis.com/css?family=Playfair+Display+SC")
 
 html
     height: 100%
     background-color: #eee
     position: relative
 
+    $size : 16px
+    $col-a: #F1997A
+    $col-b: #fdfdfd
+    background-size: $size $size
+    background-color: white
+    background-image: linear-gradient(-45deg, $col-b 25%, $col-a 25%, $col-a 50%, $col-b 50%, $col-b 75%, $col-a 75%, $col-a)
+    
 body
-    font-family: "メイリオ", "Meiryo", "Hiragino Kaku Gothic ProN", "ヒラギノ角ゴ ProN W3"
+    font-family: "Open Sans","Meiryo", "Hiragino Kaku Gothic ProN", sans-serif
     height: 100%
-    background-color: transparent
+    // background-color: #FBDED8
     font-size: 20px
+    padding-left: 8px
+    padding-right: 8px
+    color: #333
+ 
 
+#wrap
+    margin: 0 auto
+    @media ( min-width : $limit2 )
+        width: 900px
+    @media ( max-width : $limit2 )
+        width: auto
+p
+    line-height: 1.6em
+    margin: 16px 0
+h1
+    font-size: 32px
+h2
+    font-size: 28px
+    line-height: 1.6em
+    margin-bottom: 8px
+h3
+    font-size: 24px    
+h4
+    font-size: 20px    
+ul, ol
+    padding-left: 16px
+    li
+        margin: 16px 16px 16px 0
+        line-height: 1.4em
 
-#bg
-    z-index: -100
-    position: fixed
-    top: 0
-    left: 0
-    width: 100%
-    height: 100%
-    background-image: url(../img/bg.jpg)
-    background-repeat: no-repeat
-    background-position: center center
-    background-size: cover
+ul li
+    list-style-type: disc
 
+ol li
+    list-style-type: decimal
+
+strong
+    text-decoration: underline
 .left
     text-align: left
 .center
     text-align: center
 .right
     text-align: right
+.centered
+    margin-left: auto
+    margin-right: auto
+.float-left
+    float: left
+.float-right
+    float: right
+.float-adjust
+    @include clearfix
 
-
-
-
-
-
-@for $i from 2 through 8
-    $base-size : 4
+@for $i from 4 through 12
+    $base-size : 2
     .f#{$base-size * $i}
         font-size: #{$base-size * $i}px
-
-
-.content
-    p
-        line-height: 1.6em
-        margin: 16px 0
-
-    ul, ol
-        padding-left: 16px
-        li
-            margin: 16px 16px 16px 0
-            line-height: 1.4em
-
-    ul li
-        list-style-type: disc
-
-    ol li
-        list-style-type: decimal
-
-    strong
-        text-decoration: underline
-
-@import url(http://fonts.googleapis.com/css?family=Cinzel)
-
-.top
-    .link-tips
-        margin-top: 8px
-        text-align: center
-        .link-tip
-            font-size: 42px
-            margin: 0 16px
-            a
-                color: #000
-                &:hover
-                    color: #999
-
-    .logo
-        text-align: center
-        .logo-img
-            width: 256px
-            height: 256px
-
-    h2
-        color: #000
-        font-size: 72px
-        line-height: 90px
-        text-align: center
-        font-family: 'Cinzel', serif
-
-    @media ( max-width : $limit )
-        h2
-            font-size: 50px
-            line-height: 70px
-
-
-    .content
-        margin: 40px 0
-        padding: 16px
-        font-size: 20px
-        p
-            color: #222
-
 
 
 
@@ -142,17 +120,225 @@ body
         border-style: solid
 
 
-@import url("http://fonts.googleapis.com/css?family=Alegreya+Sans+SC:100")
+@keyframes rotate_loading
+    0%
+        transform: rotateZ(0deg)
+    100%
+        transform: rotateZ(360deg)
 
-.info
-    color: #fafafa
-    font-size: 18px
-    @media ( min-width : $limit )
+.loading
+    $size : 24px
+    $weight: 2px
+    animation-name: rotate_loading
+    animation-duration: 1s
+    animation-timing-function: ease
+    animation-iteration-count: infinite
+    width: $size
+    height: $size
+    border-radius: $size + $weight
+    border: $weight solid rgba(0,0,0,0.6)
+    border-top: $weight solid rgba(0,0,0,0.8)
+    margin: 8px
+
+.socialbutton
+    margin: 0 auto
+    &.google
+        width: 120px
+
+    &.twitter        
+        width: 164px
+
+    &.hatena
+        width: 150px
+
+    &.facebook
+        width: 150px    
+
+.header
+    background-color: rgba(255,255,255,.6)
+    .logo-img
+        width: 128px
+        height: 128px
+
+
+#page-loading
+    .loading
+        $size : 24px
+        position: absolute
+        left: 50%
+        top: 50%
+        margin-top: - $size / 2 
+        margin-left: - $size / 2 
+
+@keyframes 'fadeout'
+    0%
+        opacity: 1
+        visibility: visible
+    100%
+        opacity: 0
+        visibility: hidden
+
+@keyframes 'fadein'
+    0%
+        opacity: 0
+        visibility: hidden
+    100%
+        opacity: 1
+        visibility: visible
+
+@mixin to_hidden
+    animation-name: 'fadein'
+    animation-duration: .1s
+    animation-timing-function: ease-in
+    animation-iteration-count: 1
+    animation-delay: 0s
+    animation-fill-mode: both
+
+@mixin to_shown
+    animation-name: 'fadeout'
+    animation-duration: .1s
+    animation-timing-function: ease-out
+    animation-iteration-count: 1
+    animation-delay: 0s
+    animation-fill-mode: both
+
+
+.btn
+    border-radius: 3px
+    border: solid 2px #eee
+    background-color: rgba(255,255,255,.4)
+    text-align: center
+    line-height: 30px
+    height: 30px
+    font-size: 16px
+
+.candidates
+    width: 100%
+    height: 600px
+
+    color: #eee
+    &.open
+        @media ( min-width : $limit )
+            .candidate
+                // 45 * 4 = 180
+                width: 5%
+                &.open
+                    // 720
+                    width: 80%
+        @media ( max-width : $limit )
+            .candidate
+                width: 0%
+                &.open
+                    width: 100%
+
+    .candidate
+        position: relative
+        width: 20%
+        height: 100%
+        float: left
+        transition: width .5s ease
         overflow: hidden
+        cursor: pointer
 
+
+        .bg
+            position: absolute
+            top: 0
+            width: 720px
+            height: 600px
+            transition: left 0.5s ease, margin-left 0.5s ease
+            background-size: 720px 600px
+            background-position: center
+
+    
+        &.open
+            .bg
+                @media ( min-width : $limit )
+                    left: 0px
+                @media ( max-width : $limit )
+                    left: 50%
+                    margin-left: -360px
+
+
+
+    .candidate-no1
+        z-index: 1
+        .bg
+            background-image: url("/media/candidates/no1/cover.jpg")
+            left: -400px
+
+    .candidate-no2
+        z-index: 2
+        .bg
+            background-image: url("/media/candidates/no2/cover.jpg")
+            left: -330px
+
+    .candidate-no3
+        z-index: 3
+        .bg
+            background-image: url("/media/candidates/no3/cover.jpg")
+            left: -360px
+    .candidate-no4
+        z-index: 4
+        .bg
+            background-image: url("/media/candidates/no4/cover.jpg")
+            left: -290px
+
+    .candidate-no5
+        z-index: 5
+        .bg
+            background-image: url("/media/candidates/no5/cover.jpg")
+            left: -250px
+
+
+.contents
+    position: relative
     .content
+        min-height: 600px
+
+    .content-candidate
+        background-color: rgba(255,255,255,.6)
+        padding: 0 16px 16px
+        table
+            border: 1px solid #ccc
+            color: #333
+            // width: 100%
+            border-collapse: collapse
+            border-spacing: 2px
+            border-color: gray
+            width: 100%
+            tr
+                display: table-row
+                vertical-align: inherit
+                border-color: inherit
+                th,td
+                    vertical-align: middle
+                    padding: 16px
+                    border: 1px solid #ccc
+                
+                th
+                    text-align: center
+                    @media ( max-width : $limit )
+                        width: 100px
+                    @media ( min-width : $limit )
+                        width: 200px
+                
+                td
+                    text-align: left
+        
+    
+
+
+
+    .content-main
+        @media ( min-width : $limit )
+            overflow: hidden
+        .renewal
+            padding: 16px
+            background-color: rgba(255,255,255,.6)
+
         .peep
-            @include peep(16px, 160px, #55C394)
+            @include peep(16px, 160px, rgba(255,255,255,.6))
             .icon
                 text-align: center
                 font-size: 72px    
@@ -161,7 +347,7 @@ body
 
         .message
             padding: 16px
-            background-color: #55C394
+            background-color: rgba(255,255,255,.6)
             @media ( min-width : $limit )
                 padding-bottom: 32768px
                 margin-bottom: -32768px
@@ -172,52 +358,19 @@ body
 
         .mail
             font-size: 16px
-    .recruit
-        .icon
-            color: #E97040
 
-    .candidate
-        .icon
-            color: #FBC
+        .recruit
+            .icon
+                color: #2ecc71
 
-    .about
-        .icon
-            color: #3D86BE
+        .candidate
+            .icon
+                color: #FBC
 
-    .sponsor
-        .icon
-            color: #e74c3c
+        .about
+            .icon
+                color: #3D86BE
 
-
-
-
-
-.footer
-    background-color: #55C394
-    .socialbuttons
-        margin: 0 auto
-        max-width: 640px      
-        .socialbutton
-            margin: 0 auto
-
-        .google
-            width: 120px
-
-        .twitter        
-            width: 164px
-
-        .hatena
-            width: 150px
-
-        .facebook
-            width: 150px
-
-    .copyright
-        text-align: center
-        font-size: 12px
-        line-height: 20px
-
-
-
-
-
+        .sponsor
+            .icon
+                color: #e74c3c    
