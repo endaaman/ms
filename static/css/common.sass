@@ -1,376 +1,165 @@
-@import "compass/reset"
-// not use responsive then set $limit 0px
-$limit: 600px
-$limit2: 900px
-$cols: 12
-$gutters-margin: 2%
-@import "responsive"
+// @import "compass/reset"
+@import "bootstrap"
+@import "_ngdialog"
 
-
-
-@import url("http://fonts.googleapis.com/css?family=Cinzel")
 @import url("http://fonts.googleapis.com/css?family=Alegreya+Sans+SC:100")
+@import url("http://fonts.googleapis.com/css?family=Raleway:100")
 @import url("http://fonts.googleapis.com/css?family=Open+Sans")
-@import url("http://fonts.googleapis.com/css?family=Playfair+Display+SC")
+@import url("http://fonts.googleapis.com/css?family=Cinzel")
 
-html
+*
+    box-sizing: border-box
+
+@mixin clearfix()
+    &:after
+        content: "" 
+        display: block
+        clear: both 
+
+@mixin def-font
+    font-family: "Open Sans", "メイリオ", "Meiryo", "Hiragino Kaku Gothic ProN", "ヒラギノ角ゴ ProN W3"
+
+
+@mixin mono-font
+    font-family: menlo, Consolas, 'Liberation Mono', Courier, monospace
+
+
+html 
+    @mixin def-font
     height: 100%
-    background-color: #eee
-    position: relative
+    background-color: #fefefe
 
-    $size : 16px
-    $col-a: #F1997A
-    $col-b: #fdfdfd
-    background-size: $size $size
-    background-color: white
-    background-image: linear-gradient(-45deg, $col-b 25%, $col-a 25%, $col-a 50%, $col-b 50%, $col-b 75%, $col-a 75%, $col-a)
-    
+$basic-color: #111
+
 body
-    font-family: "Open Sans","Meiryo", "Hiragino Kaku Gothic ProN", sans-serif
-    height: 100%
-    // background-color: #FBDED8
-    font-size: 20px
-    padding-left: 8px
-    padding-right: 8px
-    color: #333
- 
-
-#wrap
-    margin: 0 auto
-    @media ( min-width : $limit2 )
-        width: 900px
-    @media ( max-width : $limit2 )
-        width: auto
-p
-    line-height: 1.6em
-    margin: 16px 0
-h1
-    font-size: 32px
-h2
-    font-size: 28px
-    line-height: 1.6em
-    margin-bottom: 8px
-h3
-    font-size: 24px    
-h4
-    font-size: 20px    
-ul, ol
-    padding-left: 16px
-    li
-        margin: 16px 16px 16px 0
-        line-height: 1.4em
-
-ul li
-    list-style-type: disc
-
-ol li
-    list-style-type: decimal
-
-strong
-    text-decoration: underline
-.left
-    text-align: left
-.center
-    text-align: center
-.right
-    text-align: right
-.centered
-    margin-left: auto
-    margin-right: auto
-.float-left
-    float: left
-.float-right
-    float: right
-.float-adjust
-    @include clearfix
-
-@for $i from 4 through 12
-    $base-size : 2
-    .f#{$base-size * $i}
-        font-size: #{$base-size * $i}px
-
-
-
-@mixin peep($top, $size, $color, $mb : 0px)
-    overflow: hidden
-    position: relative
-    &:before
-        content: ''        
-        display: block
-        height: $top + $size + $mb
-
-    .peep-hole
-        z-index: 0
-        content: ''
-        $big : 4000px
-        $r : $big / 2 
-        $b : $r - $size / 2
-
-        position: absolute
-        display: block
-        left: 50%
-        margin: 0 0 0 (-$r)
-
-        top: - $b + $top
-        width: $r * 2
-        height: $r * 2
-        border-radius: $r
-        border-color: $color
-        border-width: $b
-        border-style: solid
-
-
-@keyframes rotate_loading
-    0%
-        transform: rotateZ(0deg)
-    100%
-        transform: rotateZ(360deg)
-
-.loading
-    $size : 24px
-    $weight: 2px
-    animation-name: rotate_loading
-    animation-duration: 1s
-    animation-timing-function: ease
-    animation-iteration-count: infinite
-    width: $size
-    height: $size
-    border-radius: $size + $weight
-    border: $weight solid rgba(0,0,0,0.6)
-    border-top: $weight solid rgba(0,0,0,0.8)
-    margin: 8px
-
-.socialbutton
-    margin: 0 auto
-    &.google
-        width: 120px
-
-    &.twitter        
-        width: 164px
-
-    &.hatena
-        width: 150px
-
-    &.facebook
-        width: 150px    
-
-.header
-    background-color: rgba(255,255,255,.6)
-    .logo-img
-        width: 128px
-        height: 128px
-
-
-#page-loading
-    .loading
-        $size : 24px
-        position: absolute
-        left: 50%
-        top: 50%
-        margin-top: - $size / 2 
-        margin-left: - $size / 2 
-
-@keyframes 'fadeout'
-    0%
-        opacity: 1
-        visibility: visible
-    100%
-        opacity: 0
-        visibility: hidden
-
-@keyframes 'fadein'
-    0%
-        opacity: 0
-        visibility: hidden
-    100%
-        opacity: 1
-        visibility: visible
-
-@mixin to_hidden
-    animation-name: 'fadein'
-    animation-duration: .1s
-    animation-timing-function: ease-in
-    animation-iteration-count: 1
-    animation-delay: 0s
-    animation-fill-mode: both
-
-@mixin to_shown
-    animation-name: 'fadeout'
-    animation-duration: .1s
-    animation-timing-function: ease-out
-    animation-iteration-count: 1
-    animation-delay: 0s
-    animation-fill-mode: both
-
-
-.btn
-    border-radius: 3px
-    border: solid 2px #eee
-    background-color: rgba(255,255,255,.4)
-    text-align: center
-    line-height: 30px
-    height: 30px
+    // height: 100%
     font-size: 16px
+    background-color: transparent
+    color: $basic-color
 
-.candidates
+    @media (min-width: $screen-sm-min)
+        padding-bottom: 120px
+
+
+$pc_bg: url('/static/img/bg.jpg')
+$sp_bg: url('/static/img/bg_sp.jpg')
+
+#preload-bg
+    display: none
+    background-image: $pc_bg
+    background-image: $sp_bg
+
+
+#bg
+    z-index: -1
+    position: fixed
     width: 100%
-    height: 600px
+    height: 100%
+    left: 0
+    top: 0
 
-    color: #eee
-    &.open
-        @media ( min-width : $limit )
-            .candidate
-                // 45 * 4 = 180
-                width: 5%
-                &.open
-                    // 720
-                    width: 80%
-        @media ( max-width : $limit )
-            .candidate
-                width: 0%
-                &.open
-                    width: 100%
+    background-position: center center
+    background-size: cover
+    
+    &.bg-home
+        background-repeat: no-repeat
+        background-image: $pc_bg
+        @media screen and (max-aspect-ratio: 1/1)
+            background-image: $sp_bg
+    &.bg-other
+        background-repeat: repeat repeat
+        $size : 32px
+        $col-a: #F1d9bA
+        $col-b: #fdfdfd
+        background-size: $size $size
+        background-color: white
+        background-image: linear-gradient(-45deg, $col-b 25%, $col-a 25%, $col-a 50%, $col-b 50%, $col-b 75%, $col-a 75%, $col-a)
 
-    .candidate
+#heading
+    h1
+        font-family: "Raleway", sans-serif
+        font-size: 60px
+
+#footer
+    @media (min-width: $screen-sm-min)
+        position: fixed
+    @media (max-width: $screen-sm-max)
         position: relative
-        width: 20%
-        height: 100%
-        float: left
-        transition: width .5s ease
-        overflow: hidden
-        cursor: pointer
-
-
-        .bg
-            position: absolute
-            top: 0
-            width: 720px
-            height: 600px
-            transition: left 0.5s ease, margin-left 0.5s ease
-            background-size: 720px 600px
-            background-position: center
-
     
-        &.open
-            .bg
-                @media ( min-width : $limit )
-                    left: 0px
-                @media ( max-width : $limit )
-                    left: 50%
-                    margin-left: -360px
+    margin-top: 20px
+    left: 0
+    bottom: 10px
+    width: 100%
+    // overflow-x: hidden
+    .nav
+        font-size: 20px
 
+        // .logo-container
+        //     padding: 0 10px
+        //     text-align: center
+        //     .logo
+        //         height: 100px
+    .dropdown-menu
+        font-size: 16px
 
-
-    .candidate-no1
-        z-index: 1
-        .bg
-            background-image: url("/media/candidates/no1/cover.jpg")
-            left: -400px
-
-    .candidate-no2
-        z-index: 2
-        .bg
-            background-image: url("/media/candidates/no2/cover.jpg")
-            left: -330px
-
-    .candidate-no3
-        z-index: 3
-        .bg
-            background-image: url("/media/candidates/no3/cover.jpg")
-            left: -360px
-    .candidate-no4
-        z-index: 4
-        .bg
-            background-image: url("/media/candidates/no4/cover.jpg")
-            left: -290px
-
-    .candidate-no5
-        z-index: 5
-        .bg
-            background-image: url("/media/candidates/no5/cover.jpg")
-            left: -250px
-
-
-.contents
-    position: relative
-    .content
-        min-height: 600px
-
-    .content-candidate
-        background-color: rgba(255,255,255,.6)
-        padding: 0 16px 16px
-        table
-            border: 1px solid #ccc
-            color: #333
-            // width: 100%
-            border-collapse: collapse
-            border-spacing: 2px
-            border-color: gray
-            width: 100%
-            tr
-                display: table-row
-                vertical-align: inherit
-                border-color: inherit
-                th,td
-                    vertical-align: middle
-                    padding: 16px
-                    border: 1px solid #ccc
-                
-                th
-                    text-align: center
-                    @media ( max-width : $limit )
-                        width: 100px
-                    @media ( min-width : $limit )
-                        width: 200px
-                
-                td
-                    text-align: left
+    #socialbuttons
         
-    
+
+.thumb
+    img
+        // width: 300px
+        // height: 300px
 
 
-
-    .content-main
-        @media ( min-width : $limit )
-            overflow: hidden
-        .renewal
-            padding: 16px
-            background-color: rgba(255,255,255,.6)
-
-        .peep
-            @include peep(16px, 160px, rgba(255,255,255,.6))
-            .icon
-                text-align: center
-                font-size: 72px    
-                line-height: 160px
+.fa-hatebu,.glyphicon-hatebu
+    &:before 
+        content: "B!"
+        font-family: Verdana
+        font-weight: bold
 
 
-        .message
-            padding: 16px
-            background-color: rgba(255,255,255,.6)
-            @media ( min-width : $limit )
-                padding-bottom: 32768px
-                margin-bottom: -32768px
-        h3
-            font-family: 'Alegreya Sans SC', sans-serif
-            font-size: 32px
+.social-buttons
+    .social-icon
+        font-size: 28px
+    .social-button
+        min-width: 100px
+        position: relative
+        .social-counter
+            // display: none
+            // opacity: 0
+            position: absolute
+            left: 50%
+            margin-left: -50px
+            width: 100px
+            height: 30px 
+            bottom: 8px
+            color: #333
+            text-align: center
+            line-height: 30px
+            font-size: 22px
+            border: 2px rgba(255,255,255,0.2) solid
+            border-radius: 3px
+            // background-color: rgba(255,255,255,0.2)
+            transition: top 0.5s ease, opacity 0.5s ease
+
+
+        &.twitter
+            .social-icon
+                color: #55ACEE
+        &.facebook
+            .social-icon
+                color: #3b5998
+        &.hatebu
+            .social-icon
+                color: #2c6ebd
+
+table.candidate-table.table
+    tr
+        td:nth-child(1)
+            width: 140px
             text-align: center
 
-        .mail
-            font-size: 16px
+code
+    @include mono-font
 
-        .recruit
-            .icon
-                color: #2ecc71
 
-        .candidate
-            .icon
-                color: #FBC
-
-        .about
-            .icon
-                color: #3D86BE
-
-        .sponsor
-            .icon
-                color: #e74c3c    

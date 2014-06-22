@@ -23,24 +23,5 @@ def mail(request, addr_type=None):
     return http.HttpResponseForbidden()
 
 
-def home(request):
-    candidates = Candidate.objects.order_by('-entry_number')
-    return render_to_response('home.html',
-                              dict(
-                                  candidates=candidates
-                              ),
-                              context_instance=RequestContext(request))
-
-def about(request):
-    return render_to_response('about.html',
-                              {},
-                              context_instance=RequestContext(request))
-
-def contact(request):
-    return render_to_response('contact.html',
-                              {},
-                              context_instance=RequestContext(request))
-
-
 def anal(request):
     return http.HttpResponse('google-site-verification: googlebf07e42e7005708f.html', content_type='text/html')
