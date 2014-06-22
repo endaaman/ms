@@ -80,7 +80,7 @@ ROOT_URLCONF = 'ms.urls'
 WSGI_APPLICATION = 'ms.wsgi.application'
 
 COMPRESS_PRECOMPILERS = (
-    ('text/coffeescript', 'coffee --compile --stdio'),
+    # ('text/coffeescript', 'coffee --compile --stdio'),
     ('text/x-sass', 'sass {infile} {outfile} --compass -E utf-8 && autoprefixer {outfile}'),
     ('text/less', 'lessc {infile} {outfile}'),
 )
