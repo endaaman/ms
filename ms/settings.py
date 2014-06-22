@@ -82,7 +82,8 @@ ROOT_URLCONF = 'ms.urls'
 WSGI_APPLICATION = 'ms.wsgi.application'
 
 # fixer on rbenv sass
-sys.path = ['/usr/local/rbenv/shims/bin'] + sys.path
+# sys.path = ['/usr/local/rbenv/shims/bin'] + sys.path
+os.environ['GEM_HOME'] = '/usr/local/rbenv/shims'
 
 COMPRESS_PRECOMPILERS = (
     # ('text/coffeescript', 'coffee --compile --stdio'),
