@@ -184,7 +184,7 @@ endaApp.controller(
 
             $scope.OpenMail = ()->
                 num = $scope.candidate.entry_number
-                name = $scope.candidate.entry_number
-                $window.location = "mailto:mshu2014.vote+#{num}@gmail.com?subject=エントリーNo.#{num} #{name}さんに投票する&body=良ければ#{name}さんを選んだ理由などをお聞かせください。"
+                name = $scope.candidate.name
+                $window.location = "mailto:mshu2014.vote+#{num}@gmail.com?subject=エントリーNo.#{num} #{name}さんに投票する&body=このまま編集せずに送信してください"
     ]
 )

@@ -127,8 +127,8 @@
       return $scope.OpenMail = function() {
         var name;
         num = $scope.candidate.entry_number;
-        name = $scope.candidate.entry_number;
-        return $window.location = "mailto:mshu2014.vote+" + num + "@gmail.com?subject=エントリーNo." + num + " " + name + "さんに投票する&body=良ければ" + name + "さんを選んだ理由などをお聞かせください。";
+        name = $scope.candidate.name;
+        return $window.location = "mailto:mshu2014.vote+" + num + "@gmail.com?subject=エントリーNo." + num + " " + name + "さんに投票する&body=このまま編集せずに送信してください";
       };
     }
   ]);
