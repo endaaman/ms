@@ -85,8 +85,8 @@ os.environ['GEM_HOME'] = '/usr/local/ruby/gems'
 
 COMPRESS_PRECOMPILERS = (
     # ('text/coffeescript', 'coffee --compile --stdio'),
-    ('text/x-sass', 'sass {infile} {outfile} --compass -E utf-8 && autoprefixer {outfile}'),
-    ('text/less', 'lessc {infile} {outfile}'),
+    ('text/x-sass', '/usr/bin/env sass {infile} {outfile} --compass -E utf-8 && autoprefixer {outfile}'),
+    ('text/less', '/usr/bin/env lessc {infile} {outfile}'),
 )
 COMPRESS_ENABLED = True
 
