@@ -118,7 +118,7 @@
         return $scope.photos = photos;
       });
       $scope.OpenDialog = function(url) {
-        $scope.image_url = p.thumb;
+        $scope.image_url = url;
         return ngDialog.open({
           template: 'DialogTemplate',
           scope: $scope

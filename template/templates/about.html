@@ -1,0 +1,12 @@
+<!DOCTYPE html>{% load compress %}{% load static from staticfiles %}
+<html>
+{% compress css %}
+<link type="text/x-sass" rel="stylesheet" href="{{STATIC_URL}}css/common.sass" charset="utf-8" />
+{% endcompress %}
+<body>
+<img src="{{ STATIC_URL }}images/hi.jpg" />
+<img src="{% static "images/hi.jpg" %}" />
+
+about
+</body>
+</html>
