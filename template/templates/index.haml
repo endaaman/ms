@@ -13,18 +13,17 @@
     %meta{content: "http://mshu2014.gallery/", property: "og:url"}/
     %meta{content: "http://mshu2014.gallery{{STATIC_URL}}img/logo.png", property: "og:image"}/
 
-    -# -compress js
-    %script{src:"{{STATIC_URL}}js/angular.min.js"}
-    %script{src:"{{STATIC_URL}}js/angular-resource.min.js"}
-    %script{src:"{{STATIC_URL}}js/angular-route.min.js"}
-    %script{src:"{{STATIC_URL}}js/angular-sanitize.min.js"}
-    %script{src:"{{STATIC_URL}}js/angular-ui-bootstrap-tpls.min.js"}
-    %script{src:"{{STATIC_URL}}js/ngDialog.min.js"}
-    %script{src:"{{STATIC_URL}}js/common.js"}
+    -compress js
+        %script{src:"{{STATIC_URL}}js/angular.min.js"}
+        %script{src:"{{STATIC_URL}}js/angular-resource.min.js"}
+        %script{src:"{{STATIC_URL}}js/angular-route.min.js"}
+        %script{src:"{{STATIC_URL}}js/angular-sanitize.min.js"}
+        %script{src:"{{STATIC_URL}}js/angular-ui-bootstrap-tpls.min.js"}
+        %script{src:"{{STATIC_URL}}js/ngDialog.min.js"}
+        %script{src:"{{STATIC_URL}}js/common.js"}
     -# -compress css
     -#     %link{rel:"stylesheet", href:"{{STATIC_URL}}css/common.sass", type:"text/x-sass"}
     %link{rel:"stylesheet", href:"{{STATIC_URL}}css/common.css"}
-    %link{rel:"stylesheet", href:"{{STATIC_URL}}css/font-awesome.min.css"}
     %body{ng-controller: "MainCtrl"}
         #bg{class: "{$ bgClass $}" }
         #preload-bg
