@@ -79,6 +79,9 @@ ROOT_URLCONF = 'ms.urls'
 
 WSGI_APPLICATION = 'ms.wsgi.application'
 
+# fixer on rbenv sass
+sys.path = ['/usr/local/rbenv/shims/bin'] + sys.path
+
 COMPRESS_PRECOMPILERS = (
     # ('text/coffeescript', 'coffee --compile --stdio'),
     ('text/x-sass', 'sass {infile} {outfile} --compass -E utf-8 && autoprefixer {outfile}'),
