@@ -34,7 +34,11 @@ endaApp
             ).when(
                 '/contest/',
                     templateUrl: '/templates/contest.html',
-                    controller: 'ContestCtrl',
+                    controller: 'ContestCtrl',            
+            ).when(
+                '/vote/',
+                    templateUrl: '/templates/vote.html',
+                    controller: 'VoteCtrl',
             ).otherwise(
                 redirectTo: '/'
             )
@@ -158,6 +162,16 @@ endaApp.controller(
             $scope.$parent.bgClass = 'bg-other'
     ]
 )
+
+endaApp.controller(
+    'VoteCtrl', 
+    [
+        '$scope',
+        ($scope)->
+            $scope.$parent.bgClass = 'bg-other'
+    ]
+)
+
 
 endaApp.controller(
     'CandidateEachCtrl', 

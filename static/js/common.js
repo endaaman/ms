@@ -18,6 +18,9 @@
       }).when('/contest/', {
         templateUrl: '/templates/contest.html',
         controller: 'ContestCtrl'
+      }).when('/vote/', {
+        templateUrl: '/templates/vote.html',
+        controller: 'VoteCtrl'
       }).otherwise({
         redirectTo: '/'
       });
@@ -100,6 +103,12 @@
   endaApp.controller('CandidateCtrl', [
     '$scope', function($scope) {
       $scope.message = 'This is CandidateCtrl!';
+      return $scope.$parent.bgClass = 'bg-other';
+    }
+  ]);
+
+  endaApp.controller('VoteCtrl', [
+    '$scope', function($scope) {
       return $scope.$parent.bgClass = 'bg-other';
     }
   ]);
