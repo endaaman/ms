@@ -13,6 +13,7 @@ class Candidate(models.Model):
     blood_type = models.CharField(max_length=5, blank=True, null=True, verbose_name='血液型')
     motive = models.TextField(blank=True, null=True, verbose_name='動機')
     message = models.TextField(blank=True, null=True, verbose_name='メッセージ')
+    hobby = models.CharField(max_length='100', blank=True, null=True, verbose_name='趣味')
 
     class Meta:
         verbose_name = verbose_name_plural = '候補者'

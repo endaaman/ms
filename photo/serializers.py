@@ -1,8 +1,6 @@
 #-*- encoding: utf-8 -*-
-from django.forms import widgets
 from rest_framework import serializers
 from models import Photo
-from ms import settings
 
 
 class PhotoSerializer(serializers.HyperlinkedModelSerializer):
@@ -25,5 +23,5 @@ class PhotoSerializer(serializers.HyperlinkedModelSerializer):
             'thumb',
             'title',
             'desc',
-            'index', 
+            'index',
         )
