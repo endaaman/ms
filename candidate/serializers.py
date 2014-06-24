@@ -1,12 +1,10 @@
 #-*- encoding: utf-8 -*-
-from django.forms import widgets
+
 from rest_framework import serializers
 from models import Candidate
 
 
-
 class CandidateSerializer(serializers.ModelSerializer):
-
     def __init__(self, *args, **kwargs):
         fields = kwargs.pop('fields', None)
 
@@ -29,4 +27,6 @@ class CandidateSerializer(serializers.ModelSerializer):
                   'grade',
                   'blood_type',
                   'motive',
-                  'message',)
+                  'hobby',
+                  'message'
+                  )
