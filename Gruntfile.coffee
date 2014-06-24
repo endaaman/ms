@@ -55,6 +55,12 @@ module.exports = (grunt) ->
                 src: ['common.css']
                 dest: 'static/css/'
                 ext: '.min.css'
+        uglify:
+            options:
+                mangle: false
+            my_target:
+                files:
+                    'static/js/common.min.js': ['static/js/common.js']
 
         watch:
             files: ['static-src/css/common.sass']
@@ -115,25 +121,28 @@ module.exports = (grunt) ->
     grunt.loadNpmTasks 'grunt-contrib-coffee'
     grunt.loadNpmTasks 'grunt-contrib-clean'
     grunt.loadNpmTasks 'grunt-contrib-cssmin'
+    grunt.loadNpmTasks 'grunt-contrib-uglify'
     grunt.loadNpmTasks 'grunt-ect'
     grunt.loadNpmTasks 'grunt-autoprefixer'
 
     grunt.registerTask 'local', [
+        'clean:local'
         'sass'
         'autoprefixer'
         'coffee'
 
         'ect:local'
-        'clean:local'
     ]
     grunt.registerTask 'deploy', [
+        'clean:deploy'
         'sass'
         'autoprefixer'
-        'coffee'
-
         'cssmin'
+
+        'coffee'
         'concat'
+        # 'uglify'
+
         'ect:deploy'
-        'clean:deploy'
     ]
     grunt.registerTask 'default', ['local']
