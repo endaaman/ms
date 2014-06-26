@@ -1,0 +1,211 @@
+// @import "compass/reset"
+@import "bootstrap"
+@import "_ngdialog"
+@import "font-awesome"
+
+@import url("http://fonts.googleapis.com/css?family=Raleway:100")
+@import url("http://fonts.googleapis.com/css?family=Open+Sans")
+
+
+
+@mixin clearfix()
+    &:after
+        content: ""
+        display: block
+        clear: both
+
+@mixin def-font
+    font-family: "Open Sans", "メイリオ", "Meiryo", "Hiragino Kaku Gothic ProN", "ヒラギノ角ゴ ProN W3"
+
+
+.float-right
+    float: right
+
+.float-left
+    float: left
+
+html
+    @mixin def-font
+    height: 100%
+    background-color: #fefefe
+
+$basic-color: #111
+
+*
+    box-sizing: border-box
+
+body
+    width: 100%
+    height: 100%
+    font-size: 16px
+    background-color: transparent
+    color: $basic-color
+    position: relative
+    overflow-x: hidden
+
+#wrap
+    min-height: 100%
+    position: relative
+
+
+
+// $pc_bg: url('/static/img/bg.jpg')
+// $sp_bg: url('/static/img/bg_sp.jpg')
+
+$pc_bg: url('/static/img/bg_scene.jpg')
+$sp_bg: url('/static/img/bg_scene.jpg')
+
+#preload-bg
+    display: none
+    background-image: $pc_bg
+    background-image: $sp_bg
+
+#bg
+    z-index: -1
+    position: fixed
+    width: 100%
+    height: 100%
+    left: 0
+    top: 0
+    background-position: center center
+    background-size: cover cover
+
+    &.bg-home
+        background-repeat: no-repeat
+        background-image: $pc_bg
+        @media screen and (max-aspect-ratio: 1/1)
+            background-image: $sp_bg
+
+    &.bg-other
+        background-repeat: repeat repeat
+        $size : 32px
+        $col-a: #F1d9bA
+        $col-b: #fdfdfd
+        background-size: $size $size
+        background-color: white
+        background-image: linear-gradient(-45deg, $col-b 25%, $col-a 25%, $col-a 50%, $col-b 50%, $col-b 75%, $col-a 75%, $col-a)
+
+#heading
+
+
+
+@keyframes fade
+    0%
+        opacity: 0
+        transform: translateY(10px)
+    100%
+        transform: translateY(0)
+        opacity: 1
+
+
+
+#main-content
+    @media (max-width: $screen-xs-min)
+        padding-bottom: 300px
+    @media (min-width: $screen-xs-min)
+        padding-bottom: 120px
+
+#home
+    @include clearfix
+    margin-bottom: 40px
+    h1#title
+        margin-top: 0
+        font-family: "Raleway", sans-serif
+        font-size: 60px
+        height: 200px
+
+    .poem
+        text-shadow: 2px 4px 3px rgba(255,255,255,0.3)
+        margin-right: auto
+        margin-left: auto
+        max-width: 400px
+        font-size: 18px
+        p
+            line-height: 36px
+            // margin-top: 12px
+            // margin-bottom: 12px
+        span
+            font-size: 36px
+            color: #d81b60
+
+        &.poeam-animate
+            color: red
+            animation-name: fade
+            animation-delay: ease-in
+            animation-duration: 3s
+            animation-delay: 0.3s
+            animation-fill-mode: both
+#footer
+    @media (max-width: $screen-xs-min)
+        position: absolute
+    @media (min-width: $screen-xs-min)
+        position: fixed
+
+    margin-top: 20px
+    left: 0
+    bottom: 10px
+    width: 100%
+    .nav
+        font-size: 20px
+    .dropdown-menu
+        font-size: 16px
+
+
+.thumb
+    img
+        // width: 300px
+        // height: 300px
+
+
+.fa-hatebu,.glyphicon-hatebu
+    &:before
+        content: "B!"
+        font-family: Verdana
+        font-weight: bold
+
+.social-buttons
+    .social-button
+        position: relative
+        min-width: 140px
+        .social-counter
+            // display: none
+            // opacity: 0
+            position: absolute
+            left: 50%
+            margin-left: -50px
+            width: 100px
+            height: 30px
+            bottom: 8px
+            color: #333
+            text-align: center
+            line-height: 30px
+            font-size: 22px
+            border: 2px rgba(255,255,255,0.9) solid
+            border-radius: 3px
+            // background-color: rgba(255,255,255,0.2)
+            transition: top 0.5s ease, opacity 0.5s ease
+        .social-icon
+            display: block
+            font-size: 32px
+            @media (min-width: $screen-xs-min)
+                &:before
+                    display: block
+                    text-align: center
+
+        &.twitter
+            .social-icon
+                color: #55ACEE
+        &.facebook
+            .social-icon
+                color: #3b5998
+        &.hatebu
+            .social-icon
+                color: #2c6ebd
+
+table.candidate-table.table
+    tr
+        td:nth-child(1)
+            width: 140px
+            text-align: center
+
+
