@@ -2,7 +2,6 @@
 module.exports = (grunt) ->
     'use strict'
 
-
     ect_links =
         local:
             css: '/static/css/common.css'
@@ -17,10 +16,9 @@ module.exports = (grunt) ->
             ]
         deploy:
             css: '/static/css/common.min.css'
-            js: ['/static/js/common.js']
+            js: ['/static/js/common.min.js']
 
     grunt.initConfig
-
 
         pkg: grunt.file.readJSON('package.json')
 
@@ -28,7 +26,7 @@ module.exports = (grunt) ->
             compile:
                 files: [
                     expand: true
-                    cwd: 'static-src/js/'
+                    cwd: 'static/js/'
                     src: ['**/*.coffee']
                     dest: 'static/js/'
                     ext: '.js'
@@ -42,7 +40,7 @@ module.exports = (grunt) ->
                 style: 'expanded'
             dist:
                 files:
-                    'static/css/common.css': 'static-src/css/common.sass'
+                    'static/css/common.css': 'static/css/common.sass'
 
         autoprefixer:
             no_dest:
@@ -55,6 +53,7 @@ module.exports = (grunt) ->
                 src: ['common.css']
                 dest: 'static/css/'
                 ext: '.min.css'
+
         uglify:
             options:
                 mangle: false
@@ -62,39 +61,18 @@ module.exports = (grunt) ->
                 files:
                     'static/js/common.min.js': ['static/js/common.js']
 
-        watch:
-            files: ['static-src/css/common.sass']
-            tasks: 'sass'
-
-
         concat:
             deploy:
                 src: [
-                    'static-src/js/lib/angular.js'
-                    'static-src/js/lib/angular-resource.js'
-                    'static-src/js/lib/angular-route.js'
-                    'static-src/js/lib/angular-sanitize.js'
-                    'static-src/js/lib/ui-bootstrap-tpls-0.11.0.js'
-                    'static-src/js/lib/ngDialog.js'
-                    'static-src/js/common.js'
+                    'static/js/lib/angular.js'
+                    'static/js/lib/angular-resource.js'
+                    'static/js/lib/angular-route.js'
+                    'static/js/lib/angular-sanitize.js'
+                    'static/js/lib/ui-bootstrap-tpls-0.11.0.js'
+                    'static/js/lib/ngDialog.js'
+                    'static/js/common.js'
                 ]
                 dest: 'static/js/common.js'
-
-        clean:
-            local: [
-                'static/css/common.min.css'
-            ]
-            deploy: [
-                # 'static/js/lib/angular.js'
-                # 'static/js/lib/angular-resource.js'
-                # 'static/js/lib/angular-route.js'
-                # 'static/js/lib/angular-sanitize.js'
-                # 'static/js/lib/ui-bootstrap-tpls-0.11.0.js'
-                # 'static/js/lib/ngDialog.js'
-                'static/css/common.css'
-            ]
-
-
 
         ect:
             options:
@@ -102,17 +80,37 @@ module.exports = (grunt) ->
             local:
                 src: 'grunt-generated.haml.ect'
                 dest: 'template/templates/grunt-generated.haml'
-                variables:{
+                variables:
                     css: ect_links.local.css
                     js: ect_links.local.js
-                }
             deploy:
                 src: 'grunt-generated.haml.ect'
                 dest: 'template/templates/grunt-generated.haml'
-                variables:{
+                variables:
                     css: ect_links.deploy.css
                     js: ect_links.deploy.js
-                }
+
+        watch:
+            html_files:
+                files: 'template/templates/*.haml'
+            css:
+                files: [
+                    'static/**/*.sass',
+                    'static/**/*.scss',
+                ]
+                tasks: ['build-css']
+            js:
+                files: 'static/js/common.coffee'
+                tasks: ['coffee']
+            options:
+                spawn: false
+                livereload: true
+
+        connect:
+            site1:
+                options:
+                    port: 80,
+                    hostname: 'ms.local' # set your using host for example'localhost'
 
 
     grunt.loadNpmTasks 'grunt-contrib-sass'
@@ -125,23 +123,25 @@ module.exports = (grunt) ->
     grunt.loadNpmTasks 'grunt-ect'
     grunt.loadNpmTasks 'grunt-autoprefixer'
 
-    grunt.registerTask 'local', [
-        'clean:local'
+    grunt.registerTask 'build-css', [
         'sass'
         'autoprefixer'
+    ]
+
+    grunt.registerTask 'local', [
+        'build-css'
+
         'coffee'
 
         'ect:local'
     ]
     grunt.registerTask 'deploy', [
-        'clean:deploy'
-        'sass'
-        'autoprefixer'
+        'build-css'
         'cssmin'
 
         'coffee'
         'concat'
-        # 'uglify'
+        'uglify'
 
         'ect:deploy'
     ]

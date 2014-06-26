@@ -1,8 +1,8 @@
-
 !!!5
 %html{ng-app: "endaApp"}
     %meta{charset: "UTF-8"}/
     %meta{content: "width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no", name: "viewport"}/
+    %title Ms.Hokkaido Univ.2014 Contest
     %meta{content: "北大,ホクダイ,北海道大学,ミス,ミスキャン,ミスキャンパス,ミスコン,ミスコンテスト,2014,Ms.Hokkaido Univ.", name: "keywords"}/
     %meta{content: "北海道大学にミスキャンパスが帰ってきた！その名もMs.Hokkaido Univ.2014！", name: "description"}/
     %meta{content: "Ms.Hokkaido Univ.2014公式サイト", property: "og:title"}/
@@ -16,48 +16,50 @@
 
     %body{ng-controller: "MainCtrl"}
         #bg{class: "{$ bgClass $}" }
-        #preload-bg
-        %div{ng-view: None}
-        #footer
-            .navbar.navbar-default
-                %ul.nav.navbar-nav{ng-controller: "NavCtrl"}
-                    -# %li
-                    -#     %a.logo-container
-                    -#         %img.logo{src: "{{STATIC_URL}}img/logo-black.png"}
-                    %li{ng-class: '{ active: isActive("/")}' }
-                        %a{href: "/"} ホーム
-                    %li.dropdown.dropup
-                        %a.dropdown-toggle{data-toggle: "dropdown"}
-                            候補者
-                            .caret
-                        %ul.dropdown-menu
-                            -# %li{ng-class: '{ active: isActive("/candidates/{$ c.entry_number $}")}' }
-                            -#     %a{href: "/candidates/"} 候補者について
-                            -# %li.divider
-                            %li{ng-repeat: "c in candidates", ng-class: '{ active: isActive("/candidates/{$ c.entry_number $}")}' }
-                                %a{ng-href: "/candidates/{$ c.entry_number $}"}
-                                    {$ c.name $}
-                    -# %li
-                    -#     %a.disabled{ng-class: '{ active: isActive("/contest/")}', href: "/contest/"} コンテストについて
+        #wrap
+            #preload-bg
+            #main-content{ng-view: None}
+            #footer
+                .navbar.navbar-default
+                    %ul.nav.navbar-nav{ng-controller: "NavCtrl"}
+                        -# %li
+                        -#     %a.logo-container
+                        -#         %img.logo{src: "{{STATIC_URL}}img/logo-black.png"}
+                        %li{ng-class: '{ active: isActive("/")}' }
+                            %a{href: "/"} ホーム
+                        %li.dropdown.dropup
+                            %a.dropdown-toggle{data-toggle: "dropdown"}
+                                候補者
+                                .caret
+                            %ul.dropdown-menu
+                                -# %li{ng-class: '{ active: isActive("/candidates/{$ c.entry_number $}")}' }
+                                -#     %a{href: "/candidates/"} 候補者について
+                                -# %li.divider
+                                %li{ng-repeat: "c in candidates", ng-class: '{ active: isActive("/candidates/{$ c.entry_number $}")}' }
+                                    %a{ng-href: "/candidates/{$ c.entry_number $}"}
+                                        {$ c.name $}
+                        %li{ng-class: '{ active: isActive("/contest/")}' }
+                            %a{href: "/contest/"}
+                                コンテストについて
 
-                %ul.nav.navbar-nav.navbar-right.social-buttons{ng-controller: 'SocialCtrl'}
-                    %li.social-button.hatebu
-                        %a{"data-hatena-bookmark-layout" => "simple", href: "http://b.hatena.ne.jp/entry/mshu2014.gallery/", title: "Ms.Hokkaido Univ.2014 Contest"}
-                            .social-icon.fa.fa-hatebu
-                            .social-counter
-                                {$ hatebu $}
-                        %script{async: "async", charset: "utf-8", src: "http://b.st-hatena.com/js/bookmark_button.js", type: "text/javascript"}
+                    %ul.nav.navbar-nav.navbar-right.social-buttons{ng-controller: 'SocialCtrl'}
+                        -# %li.social-button.hatebu
+                        -#     %a{"data-hatena-bookmark-layout" => "simple", href: "http://b.hatena.ne.jp/entry/mshu2014.gallery/", title: "Ms.Hokkaido Univ.2014 Contest"}
+                        -#         .social-icon.fa.fa-hatebu
+                        -#         .social-counter
+                        -#             {$ hatebu $}
+                        -#     %script{async: "async", charset: "utf-8", src: "http://b.st-hatena.com/js/bookmark_button.js", type: "text/javascript"}
 
-                    %li.social-button.twitter
-                        %a{href: "", onclick: 'window.open("http://twitter.com/share?count=horizontal&original_referer=http://mshu2014.gallery/&text=Ms.Hokkaido Univ.2014&url=http://mshu2014.gallery/&via=mshu2014", "tweetwindow", "width=550, height=450,personalbar=0,toolbar=0,scrollbars=1,resizable=1"); return false;'}
-                            .social-icon.fa.fa-twitter.
-                            .social-counter
-                                {$ tweets $}
-                    %li.social-button.facebook
-                        %a{href: "", onclick: 'window.open("http://www.facebook.com/share.php?u=http://mshu2014.gallery/", "facebookwindow", "width=550, height=450,personalbar=0,toolbar=0,scrollbars=1,resizable=1"); return false;'}
-                            .social-icon.fa.fa-facebook
-                            .social-counter
-                                {$ shares  $}
+                        %li.social-button.twitter
+                            %a{href: "", onclick: 'window.open("http://twitter.com/share?count=horizontal&original_referer=http://mshu2014.gallery/&text=Ms.Hokkaido Univ.2014&url=http://mshu2014.gallery/&via=mshu2014", "tweetwindow", "width=550, height=450,personalbar=0,toolbar=0,scrollbars=1,resizable=1"); return false;'}
+                                .social-icon.fa.fa-twitter.
+                                .social-counter
+                                    {$ tweets $}
+                        %li.social-button.facebook
+                            %a{href: "", onclick: 'window.open("http://www.facebook.com/share.php?u=http://mshu2014.gallery/", "facebookwindow", "width=550, height=450,personalbar=0,toolbar=0,scrollbars=1,resizable=1"); return false;'}
+                                .social-icon.fa.fa-facebook
+                                .social-counter
+                                    {$ shares  $}
 
 
     %script
