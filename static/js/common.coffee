@@ -228,10 +228,9 @@ endaApp.controller(
                     scope: $scope
                 )
 
-            $scope.tinko = 'tinko'
-
-            $scope.OpenMail = ()->
-                name = $scope.candidates[num-1].name
+            $scope.OpenMail = (c)->
+                name = $scope.candidates[$scope.index].name
+                num = $scope.candidates[$scope.index].entry_number
                 $window.location = "mailto:mshu2014.vote+#{num}@gmail.com?subject=エントリーNo.#{num} #{name}さんに投票する&body=このまま編集せずに送信してください"
     ]
 )

@@ -29567,10 +29567,10 @@ endaApp.controller('CandidateEachCtrl', [
         scope: $scope
       });
     };
-    $scope.tinko = 'tinko';
-    return $scope.OpenMail = function() {
+    return $scope.OpenMail = function(c) {
       var name;
-      name = $scope.candidates[num - 1].name;
+      name = $scope.candidates[$scope.index].name;
+      num = $scope.candidates[$scope.index].entry_number;
       return $window.location = "mailto:mshu2014.vote+" + num + "@gmail.com?subject=エントリーNo." + num + " " + name + "さんに投票する&body=このまま編集せずに送信してください";
     };
   }
